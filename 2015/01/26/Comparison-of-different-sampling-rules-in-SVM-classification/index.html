@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="null">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="HaoliangYu.io">
+    <title>Comparison of different sampling rules in SVM classification - HaoliangYu.io</title>
+    <meta name="author" content="Haoliang Yu">
+    
+    
+    <meta name="description" content="The problem of sampling rule in Support Vector Machine raised in the discussion when I was in the course Advanced Remote Sensing.
+The quality of training sample has deterministic influence to the accu">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Comparison of different sampling rules in SVM classification">
+<meta property="og:url" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/index.html">
+<meta property="og:site_name" content="HaoliangYu.io">
+<meta property="og:description" content="The problem of sampling rule in Support Vector Machine raised in the discussion when I was in the course Advanced Remote Sensing.
+The quality of training sample has deterministic influence to the accu">
+<meta property="og:image" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/testSample.png">
+<meta property="og:image" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/trainsample.png">
+<meta property="og:image" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/featurespace.png">
+<meta property="og:image" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/accuracytable.png">
+<meta property="og:image" content="http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/accuracyfigure.png">
+<meta property="og:updated_time" content="2015-12-06T03:12:35.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Comparison of different sampling rules in SVM classification">
+<meta name="twitter:description" content="The problem of sampling rule in Support Vector Machine raised in the discussion when I was in the course Advanced Remote Sensing.
+The quality of training sample has deterministic influence to the accu">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-55804436-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">HaoliangYu.io</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="3">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/haoliangyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/haoliangyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:haoliang.yu@outlook.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">邮箱</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Comparison of different sampling rules in SVM classification
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon Jan 26 2015 00:00:00 GMT-0500">
+	
+		    Jan 26, 2015
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/GIS/">GIS</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>The problem of sampling rule in Support Vector Machine raised in the discussion when I was in the course <em>Advanced Remote Sensing</em>.</p>
+<p>The quality of training sample has deterministic influence to the accuracy of supervised classification methods. A properly designed sampling rule plays a substantial role in yielding an informative training sample set. The design of sampling strategy depends on both the characteristics of objects of interest and the applied classification methods.<br><a id="more"></a><br>Support Vector Machine (SVM) is an increasingly popular classification method for remote sensing image both in industry and research. As for the theory and concept of SVM, there have been many introductory articles such as <a href="http://rvlasveld.github.io/blog/2013/07/12/introduction-to-one-class-support-vector-machines/" target="_blank" rel="external">Roemer`s blog</a>. Because support vectors are selected from training samples for maximizing the margin between classes, quality of sample set will decide the effectiveness of the hyperplane and affect the performance of the classifier.</p>
+<p>In brief the mechanism of SVM is very different from traditional methods like Maximum Likelihood Classification. Here comes the question: <strong>Does the sampling rule used in traditional methods also work for SVM? How does the sampling rule affect the SVM classification result?</strong></p>
+<h2 id="Experiment">Experiment</h2><hr>
+<p>To answer this question, I would like to set up a scenario for the classification experiment. In this case, I choose to perform a cloud detection based on Landsat 8 OLI image for two reasons:</p>
+<ul>
+<li><p>It is a most basic binary classification.</p>
+</li>
+<li><p>Cloud detection could be very challenging because thin cloud is very difficult to detect in many situations.</p>
+</li>
+</ul>
+<p>I use an image with both thick cloud and thin cloud in order to increase the difficulty of classification (See Figure 1). <a href="http://landsat.usgs.gov/band_designations_landsat_satellites.php" target="_blank" rel="external">Band 2 to 7</a> are used and the SVM classifier in ENVI is utilized with default configuration. Four hundred pixels are randomly picked up as test sample: half of them are cloud (blue points) and the others are ground objects (yellow points).</p>
+<img src="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/testSample.png" alt="This is an example image" title="This is an example image">
+<h2 id="Sampling_Rules">Sampling Rules</h2><hr>
+<p>I am particularly interested in three sample rules.</p>
+<ul>
+<li>Stratified random sampling</li>
+</ul>
+<p>This is a classic sample rule. Its idea is to randomly select training samples of one class from the sample pool of that class. The sample size of each class could be a fixed number or proportional to the size of sample pool of that class.</p>
+<ul>
+<li>Cluster sampling</li>
+</ul>
+<p>However, in practice random sampling is sometimes difficult to achieve, especially when the sample is selected by hand or a semi-automatic method. The sample pixels generally tend to be more clustering than random. (it is actually what we do in the ENVI class: drag a region of interest and treat it as sample set)</p>
+<ul>
+<li>Boundary sampling</li>
+</ul>
+<p>Its basic idea is that support vectors are likely also located near the geographical boundary of two classes. Although pixels located around geographic boundaries might contain spectral information of both classes to some extent, Foody and Mathur (2006) suggested that mixing pixels at two sides of ground object boundary could be highly effective in SVM even the sample size was very smaller. They considered this approach as a competitive alternative of conventional sampling strategy.</p>
+<p>So I select three training sets based on above sampling rules (See Figure 2).</p>
+<img src="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/trainsample.png" alt="This is an example image" title="This is an example image">
+<h2 id="Training_set_in_feature_space">Training set in feature space</h2><hr>
+<p>While using the SVM, we hope that our training samples are located near the boundary of classes in the feature space. Figure 3 shows how samples in three training sets, as well as the test set, scatter at a feature space (red band vs. NIR band).</p>
+<img src="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/featurespace.png" alt="This is an example image" title="This is an example image">
+<p>Cloud has high reflectance in both red band and near infrared band, however, the reflectance of ground objects (most are vegetation) is low in red band and high in near infrared band. Due to the reflectance difference, samples in the feature space apparently belong to two distinct groups: cloud and ground objects. As shown in Figure 3, the distribution of samples in different training sets are totally different. Boundary sampling produced samples located near the boundary of two classes. Samples generated with stratified random sampling could better represent the overall characteristics of two classes. Clustering sampling within high confidence area would generate samples also clustering in the feature space.</p>
+<h2 id="Result">Result</h2><hr>
+<p>The classification results are shown in Table 1 and Figure 4.</p>
+<img src="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/accuracytable.png" alt="This is an example image" title="This is an example image">
+<img src="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/accuracyfigure.png" alt="This is an example image" title="This is an example image">
+<p>The results, as expected, indicate that boundary sampling is able to generate better training sample and contribute to higher classification accuracy, compared to the other two sampling strategies.</p>
+<p>ALl trained classifiers are also applied to the whole study image. Classifier trained with boundary samples is very sensitive to the difference between cloud and non-cloud pixels. It will try to differentiate all mixing pixels and this could be too sensitive. Classifier trained by cluster samples only recognizes thick cloud on the image and ignores pixels with mixing spectral information. Classifier trained by stratified random samples takes a balance between them: neither too aggressive nor too conventional. For detailed discussion, please read my report (see link below).</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<p>Let’s get back to our initial questions and their answers.</p>
+<ul>
+<li>Does the sampling rule used in traditional methods also work for SVM?</li>
+</ul>
+<p>Apparently the traditional stratified random sampling still works pretty well for the SVM classification. The classification accuracy in the experiment is about 90%, which is high enough for most situations.</p>
+<ul>
+<li>How does the sampling rule affect the SVM classification result?</li>
+</ul>
+<p>If we can use the portion of boundary (mixing) pixels in the training set to define sampling rule, we are able to build a link among three sampling rules used above. As we include more boundary pixels into the training set, the classifier would become more sensitive and have a better performance in identifying mixing objects. However, high sensitivity could also increase the error rate while identifying mixing objects. There is a trade-off between high sensitivity and low error rate within the selection of sampling strategies.</p>
+<p>There is no generally appropriate sampling rule for all situations. However, depending on the need of classification, there exits an appropriate sampling rule for specific situation. Therefore, it is not difficult to understand why the stratified random sampling is still the first choice in practical use. Though classifier trained stratified random sampling is expected to have fair performance, it is less likely to be trapped into the problem of overestimation and underestimation.</p>
+<h2 id="Link">Link</h2><hr>
+<p>This article is a simplified version of my project report. For more detail, please read my full report <a href="https://www.dropbox.com/s/yadta4jnuqgml9s/svm_sampling_report.pdf?dl=0" target="_blank" rel="external">A Comparison of Sampling Strategies in SVM Classification</a>.</p>
+<h2 id="Reference">Reference</h2><hr>
+<p>[1] Foody, G. M. and A. Mathur (2006). “The use of small training sets containing mixed pixels for accurate hard image classification: Training on mixed spectral responses for classification by a SVM.” Remote Sensing of Environment 103(2): 179-189.</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/"  data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/21/Pymasker/" data-tooltip="Pymasker">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Haoliang Yu. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/"  data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/21/Pymasker/" data-tooltip="Pymasker">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">Haoliang Yu</h4>
+        
+            <h5 id="about-card-bio"><p>拥抱开源</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>地理数据工程师</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'dz316424';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

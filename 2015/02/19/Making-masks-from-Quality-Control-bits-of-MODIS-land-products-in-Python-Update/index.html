@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="null">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="HaoliangYu.io">
+    <title>Making masks from Quality Control bits of MODIS land products in Python (Update) - HaoliangYu.io</title>
+    <meta name="author" content="Haoliang Yu">
+    
+    
+    <meta name="description" content="Days ago when I published the first version of pymasker for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read tech">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Making masks from Quality Control bits of MODIS land products in Python (Update)">
+<meta property="og:url" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/index.html">
+<meta property="og:site_name" content="HaoliangYu.io">
+<meta property="og:description" content="Days ago when I published the first version of pymasker for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read tech">
+<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png">
+<meta property="og:updated_time" content="2015-12-06T03:13:39.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Making masks from Quality Control bits of MODIS land products in Python (Update)">
+<meta name="twitter:description" content="Days ago when I published the first version of pymasker for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read tech">
+    
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-55804436-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">HaoliangYu.io</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="3">
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">首页</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">分类</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">标签</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">归档</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">关于</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/haoliangyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/haoliangyu" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:haoliang.yu@outlook.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">邮箱</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Making masks from Quality Control bits of MODIS land products in Python (Update)
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Feb 19 2015 21:23:29 GMT-0500">
+	
+		    Feb 19, 2015
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/GIS/">GIS</a>
+
+
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Days ago when I published the first version of <em><a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a></em> for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read technical documents of MODIS, I realize that the Quality Control bits of MOIDS products has the same structure as the QA band of Landsat 8. Therefore, I update the package to adapt MODIS products (or other NASA products with similar QC/QA bits).<br><a id="more"></a><br>In this article, I am going to show how to extract masks from the Quality Control bits of MODIS land product in python.</p>
+<h2 id="MODIS_QC/QA_bits">MODIS QC/QA bits</h2><hr>
+<p>The QC/QA bits of MODIS is a binary number, of which each section represents the state of certain condition. Just take the 250m resolution land surface reflectance product (MOD09GQ) as example. The QC band (maybe called QA band in other products) is the fourth band of the HDF dataset. It is a unsigned 16-bit band. Each value on the pixel indicates a combination of pixel conditions. We can interpret the value by separating its binary form.</p>
+<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png" alt="This is an example image" title="This is an example image">
+<p>The individual bits within a binary number are read from let to right as described in the following table.</p>
+<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png" alt="This is an example image" title="This is an example image">
+<p>Therefore when we put the interpretation back to the bit string, we are able to know what it indicates.</p>
+<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png" alt="This is an example image" title="This is an example image">
+<p>As this binary number is 4096 in integer, all pixels having value 4096 in the QC band are high quality and cloud free with atmosphere correction, but no adjacency correction.</p>
+<p>The structure of QC/QA bits vary in different MODISO products and different data collection. For full detail for each product, please have a look at</p>
+<ul>
+<li><a href="https://lpdaac.usgs.gov/products/modis_products_table" target="_blank" rel="external">MODIS Land Products QA Tutorial</a></li>
+</ul>
+<p>In the next sections, I will show how to make masks based on the QC/QA bits in python.</p>
+<h2 id="Preparation">Preparation</h2><hr>
+<p>Before getting started, you need to do the following preparations:</p>
+<ul>
+<li><p>Download and install <strong><a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a></strong>.</p>
+</li>
+<li><p>Know the band number of QC/QA band in your HDF dataset.</p>
+</li>
+<li><p>Know the QC/QA bit structure of your dataset. If you only want the mask of quality level, you don’t have to know the bit structure. Please go bottom and read the new update.</p>
+</li>
+</ul>
+<h2 id="Maksing_for_MODIS_product">Maksing for MODIS product</h2><hr>
+<p>I will continue to use MOD09GQ in the sample. First you need to load the QC Band</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymasker <span class="keyword">import</span> masker</span><br><span class="line"></span><br><span class="line"><span class="comment"># the band number of QC/QA band in your HDF dataset.</span></span><br><span class="line">bandnum = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Directly load from file, require GDAL</span></span><br><span class="line">modismasker = masker(<span class="string">'MOD09GQ.A2015025.h12v04.005.2015027064556.hdf'</span>, bandnum)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Or you just load the dataset somewhere and get the band data as numpy array</span></span><br><span class="line"><span class="keyword">import</span> gdal</span><br><span class="line"></span><br><span class="line">hdfdataset = gdal.Open(<span class="string">'MOD09GQ.A2015025.h12v04.005.2015027064556.hdf'</span>)</span><br><span class="line">subdataset = hdfdataset.GetSubDatasets()[bandnum][<span class="number">0</span>]</span><br><span class="line">bandarray = gdal.Open(subdataset).ReadAsArray()</span><br><span class="line"></span><br><span class="line">modismasker = masker(bandarray)</span><br></pre></td></tr></table></figure>
+<p>You need to know the bit information to generate certain masks. For example, we want a  mask only wit high quality pixels. In the previous section we have known that the quality bits start at the beginning (position 0) and the length is 2. We also know that <em>‘00’</em> indicate corrected product produced at ideal quality in all bands. Therefore, the high quality mask could be made with</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get high quality mask</span></span><br><span class="line">hqmask = modismasker.getmask(bitpos = <span class="number">0</span>, bitlen = <span class="number">2</span>, value = <span class="string">'00'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save the mask as a TIF file</span></span><br><span class="line">modismasker.savetif(hqmask, <span class="string">'result.tif'</span>)</span><br></pre></td></tr></table></figure>
+<p>Then you can get a binary mask where 1 represents the high quality pixel.</p>
+<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png" alt="This is an example image" title="This is an example image">
+<h2 id="Update">Update</h2><p><em>Pyamsker</em> has provided a new class for producing QA mask since version 0.2.2. So you don’t have to look for and remember those binary bits (Well I don’t like them, too).</p>
+<p>I have wrapped quality levels for MODIS land products.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymasker <span class="keyword">import</span> modisquality</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product produced at ideal quality for all bands.</span></span><br><span class="line">quality = modisquality.high</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product produced at less than ideal quality for some or all bands.</span></span><br><span class="line">quality = modisquality.medium</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product not produced due to some reasons for some or all bands.</span></span><br><span class="line">quality = modisquality.low</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product not produced due to cloud effects for all bands.</span></span><br><span class="line">quality = modisquality.low_cloud</span><br></pre></td></tr></table></figure>
+<p>Therefore, the masking code would be very intuitive and readable.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a MODIS QA masker, similar to creating a masker above</span></span><br><span class="line"><span class="keyword">from</span> pymasker <span class="keyword">import</span> modisqamasker</span><br><span class="line"></span><br><span class="line">qamasker = modisqamasker(<span class="string">'MOD09GQ.A2015025.h12v04.005.2015027064556.hdf'</span>, bandnum)</span><br><span class="line">qamask = qamasker.getqamask(modisquality.high)</span><br></pre></td></tr></table></figure>
+<p>I am going to gradually support all MODIS products in the future release. Please look forward to my new update :)</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/modis/">modis</a> <a class="tag tag--primary tag--small t-link" href="/tags/python/">python</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/11/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Haoliang Yu. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/11/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">Haoliang Yu</h4>
+        
+            <h5 id="about-card-bio"><p>拥抱开源</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>地理数据工程师</p>
+
+            </h5>
+        
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'dz316424';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>
