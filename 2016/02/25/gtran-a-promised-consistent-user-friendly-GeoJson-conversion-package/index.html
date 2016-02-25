@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
 <meta property="og:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
-<meta property="og:updated_time" content="2016-02-25T12:48:44.586Z">
+<meta property="og:updated_time" content="2016-02-25T12:56:15.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gtran: a promised, consistent, user-friendly GeoJson conversion package">
 <meta name="twitter:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
@@ -204,7 +204,7 @@
             <p>Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?</p>
 <a id="more"></a>
 <p>GeoJson is one of simplest geographic data format. If we search for data conversion packages at <a href="https://www.npmjs.com/" target="_blank" rel="external">npm.org</a>, there will be a long list packages: <a href="https://www.npmjs.com/package/shapefile" target="_blank" rel="external">shapefile</a> for shapefile, <a href="https://www.npmjs.com/package/tokml" target="_blank" rel="external">tokml</a> for kml, <a href="https://www.npmjs.com/package/geojson2dsv" target="_blank" rel="external">geojson2dcsv</a> for csv, <a href="https://www.npmjs.com/package/osm-and-geojson" target="_blank" rel="external">osm-and-geojson</a> for osm package, <a href="https://www.npmjs.com/package/geojson2" target="_blank" rel="external">geojson2</a> for multiple formats, <a href="https://www.npmjs.com/package/ogr2ogr" target="_blank" rel="external">org2org</a> and <a href="https://www.npmjs.com/package/gdal" target="_blank" rel="external">gdal</a> as data solutions… However, I still felt very inconvenient when I developed a GeoJson handling module a few months ago.</p>
-<h3 id="Why_inconvenient?">Why inconvenient?</h3><p>From my point of view, there are a few problems:</p>
+<h2 id="Why_inconvenient?">Why inconvenient?</h2><p>From my point of view, there are a few problems:</p>
 <ul>
 <li><p>Most packages are designed for one specific data format.</p>
 </li>
@@ -217,7 +217,7 @@
 </ul>
 <p>As a result, in order to make them work together, one will need to learn how to use these diverse packages, customize code to handle their diverse input/output, and write some comments for the future project maintainer.</p>
 <p>Well, it’s not very fun.</p>
-<h3 id="Gtran:_the_solution">Gtran: the solution</h3><p>The programmer’s way to handle unhappiness is to write something that make him happy :) What I want is a package with following features:</p>
+<h2 id="Gtran:_the_solution">Gtran: the solution</h2><p>The programmer’s way to handle unhappiness is to write something that make him happy :) What I want is a package with following features:</p>
 <ul>
 <li><p>Able to work with multiple formats</p>
 </li>
@@ -229,7 +229,7 @@
 </li>
 </ul>
 <p>And here comes <strong><a href="https://www.npmjs.com/package/gtran" target="_blank" rel="external">gtran</a></strong>.</p>
-<h3 id="What_does_gtran_do?">What does gtran do?</h3><p><strong>gtran</strong> wraps several existing npm packages to provide</p>
+<h2 id="What_does_gtran_do?">What does gtran do?</h2><p><strong>gtran</strong> wraps several existing npm packages to provide</p>
 <ul>
 <li><p>from/to conversion of multiple formats: .shp, .kml, .kmz, .csv, and TopoJson.</p>
 </li>
@@ -243,7 +243,7 @@
 </li>
 </ul>
 <p>It could be installed with <code>npm install gtran</code>.</p>
-<h3 id="How_could_it_be_used?">How could it be used?</h3><p>A complete use guide could be found at the <a href="https://github.com/haoliangyu/gtran" target="_blank" rel="external">GitHub repo</a> and here is a small use case:</p>
+<h2 id="How_could_it_be_used?">How could it be used?</h2><p>A complete use guide could be found at the <a href="https://github.com/haoliangyu/gtran" target="_blank" rel="external">GitHub repo</a> and here is a small use case:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var gtran = require('gtran');</span><br><span class="line"></span><br><span class="line"># Specify the promise library if necessary</span><br><span class="line">gtran.setPromiseLib(require('bluebird'));</span><br><span class="line"></span><br><span class="line"># Read shapefile</span><br><span class="line">gtran.fromShp('source.shp')</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into shapefile</span><br><span class="line">gtran.toShp(geojson, 'point.shp')</span><br><span class="line">.then(function(fileNames) &#123;</span><br><span class="line">    console.log('SHP files have been saved at:' + fileNames.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Read csv file</span><br><span class="line"># Assume the test.csv has two columns: latitude and longitude</span><br><span class="line">gtran.fromCSV('source.csv', &#123;</span><br><span class="line">    mapping: &#123; x: 'longitude', y: 'latitude' &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into a csv file</span><br><span class="line">gtran.toCSV(geojson, 'point.csv')</span><br><span class="line">.then(function(fileName) &#123;</span><br><span class="line">    console.log('CSV file has been saved at:' + fileName);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>Hope you enjoy it. If you find a bug or want a new feature, just create an <a href="https://github.com/haoliangyu/gtran/issues" target="_blank" rel="external">issue</a> and I will appreciate it :-)</p>
 
