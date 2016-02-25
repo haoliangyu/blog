@@ -14,12 +14,12 @@
 The Qua">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Making masks with Landsat 8 Quality Assessment band using Python">
-<meta property="og:url" content="http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
 <meta property="og:description" content="Notice: Since 0.2.0, the qabmasker has been renamed as landsatmasker and the function getmask has been renamed as getmultimask for better identification. Please update your script accordingly.
 The Qua">
-<meta property="og:image" content="http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/maskresult.png">
-<meta property="og:updated_time" content="2015-12-06T03:13:59.817Z">
+<meta property="og:image" content="http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/maskresult.png">
+<meta property="og:updated_time" content="2016-02-25T05:53:25.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Making masks with Landsat 8 Quality Assessment band using Python">
 <meta name="twitter:description" content="Notice: Since 0.2.0, the qabmasker has been renamed as landsatmasker and the function getmask has been renamed as getmultimask for better identification. Please update your script accordingly.
@@ -188,9 +188,9 @@ The Qua">
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Sun Jan 18 2015 21:13:06 GMT-0500">
+    <time itemprop="datePublished" content="Mon Jan 19 2015 10:13:06 GMT+0800">
 	
-		    Jan 18, 2015
+		    Jan 19, 2015
     	
     </time>
     
@@ -240,8 +240,8 @@ The Qua">
 </li>
 </ul>
 <p>Sample code for multi-criteria masking</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get mask indicating cloud pixels (high confidence) and cirrus pixels (high confidence).</span></span><br><span class="line"><span class="comment"># Exclusive and noncumulative</span></span><br><span class="line">mask = masker.getmask(cloud = confidence.high, cirrus = confidence.high)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save the result if you want.</span></span><br><span class="line">masker.savetif(mask, <span class="string">'result.tif'</span>)</span><br></pre></td></tr></table></figure>
-<img src="/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/maskresult.png" alt="This is an example image" title="This is an example image">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get mask indicating cloud pixels (high confidence) and cirrus pixels (high confidence).</span></span><br><span class="line"><span class="comment"># Exclusive and noncumulative</span></span><br><span class="line">mask = masker.getmultimask(cloud = confidence.high, cirrus = confidence.high)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save the result if you want.</span></span><br><span class="line">masker.savetif(mask, <span class="string">'result.tif'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/maskresult.png" alt="This is an example image" title="This is an example image">
 <p>Now you have your mask! Nice and quick!</p>
 
             
@@ -264,7 +264,7 @@ The Qua">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/21/Pymasker/"  data-tooltip="Pymasker">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/22/Pymasker/"  data-tooltip="Pymasker">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -287,17 +287,17 @@ The Qua">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -343,7 +343,7 @@ The Qua">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/21/Pymasker/"  data-tooltip="Pymasker">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/22/Pymasker/"  data-tooltip="Pymasker">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -366,17 +366,17 @@ The Qua">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -402,17 +402,17 @@ The Qua">
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

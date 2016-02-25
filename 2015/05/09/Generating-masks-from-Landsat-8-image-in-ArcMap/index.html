@@ -6,20 +6,22 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Pymasker - HaoliangYu.io</title>
+    <title>Generating masks from Landsat 8 image in ArcMap - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
-    <meta name="description" content="Pymasker is a python package to generate various masks from the landsat 8 Quality Assessment band and MODIS products.">
+    <meta name="description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Pymasker">
-<meta property="og:url" content="http://yoursite.com/2015/01/21/Pymasker/index.html">
+<meta property="og:title" content="Generating masks from Landsat 8 image in ArcMap">
+<meta property="og:url" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Pymasker is a python package to generate various masks from the landsat 8 Quality Assessment band and MODIS products.">
-<meta property="og:updated_time" content="2015-12-06T03:19:19.397Z">
+<meta property="og:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+<meta property="og:image" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png">
+<meta property="og:image" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png">
+<meta property="og:updated_time" content="2015-12-06T03:13:30.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pymasker">
-<meta name="twitter:description" content="Pymasker is a python package to generate various masks from the landsat 8 Quality Assessment band and MODIS products.">
+<meta name="twitter:title" content="Generating masks from Landsat 8 image in ArcMap">
+<meta name="twitter:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
     
     
     
@@ -180,19 +182,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Pymasker
+            Generating masks from Landsat 8 image in ArcMap
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Wed Jan 21 2015 22:03:02 GMT-0500">
+    <time itemprop="datePublished" content="Sat May 09 2015 09:38:02 GMT+0800">
 	
-		    Jan 21, 2015
+		    May 09, 2015
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/Project/">Project</a>
+    <a class="category-link" href="/categories/GIS/">GIS</a>
 
 
     
@@ -201,44 +203,34 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Pymasker is a python package to generate various masks from the landsat 8 Quality Assessment band and MODIS products.<br><a id="more"></a><br>This project is hosted at <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Installation">Installation</h2><p>The package can be shipped to your computer using pip.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymasker</span><br></pre></td></tr></table></figure>
-<p>Or just install it with the source code.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<p>This package depends on <a href="http://www.numpy.org/" target="_blank" rel="external"><strong>numpy</strong></a>. If you want to directly load the QA band file, <a href="https://pypi.python.org/pypi/GDAL/" target="_blank" rel="external"><strong>GDAL</strong></a> is also in need if you want to .</p>
-<h2 id="Releasse">Releasse</h2><ul>
-<li><p>0.1.o</p>
+            <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br><a id="more"></a><br>The <strong>ArcMasking</strong> toolbox contains two script tools, one designed for Landsat 8 QA band and one for generic quality assessment bits in other NASA remote sensing products like MODIS.</p>
+<p>This tool can be download at <a href="https://github.com/haoliangyu/arcmasker/releases/tag/ArcMasker_0.1" target="_blank" rel="external">GitHub</a>. After unzipping the package, you could open the ArcMasker.tbx file at the Catalog window in ArcMap and find following tools.</p>
+<h2 id="From_Landsat_8_QA_Band">From Landsat 8 QA Band</h2><hr>
+<img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png" alt="This is an example image" title="This is an example image">
+<p>This tool is used to create masks from the Quality Assessment band of Landsat 8 OLI image. It requires several inputs:</p>
 <ul>
-<li>First release of this package</li>
-</ul>
+<li><p><strong>Quality Assessment Band</strong> of Landsat 8 image</p>
 </li>
-<li><p>0.1.2</p>
-<ul>
-<li>Added multi-criteria masking</li>
-<li>Added new confidence leve: none</li>
-</ul>
+<li><p><strong>Mask type</strong> including cloud, cirrus, water, snow or vegetation</p>
 </li>
-<li><p>0.1.3</p>
-<ul>
-<li>Added <em>cumulative</em> options for multi-criteria masking</li>
-<li>Fixed a default value problem in multi-criteria masking</li>
-</ul>
+<li><p><strong>Confidence Level</strong> that indicates the likelihood of existing of specific situation. You can also choose to include confidence level above what has been selected.</p>
 </li>
-<li><p>0.1.4</p>
-<ul>
-<li>Removed the dependence of GDAL</li>
-</ul>
+<li><p><strong>Output Mask</strong> saving path</p>
 </li>
-<li><p>0.2.0</p>
-<ul>
-<li>Added support for MODIS land products</li>
 </ul>
+<h2 id="From_Quality_Assessment_Bits">From Quality Assessment Bits</h2><hr>
+<img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png" alt="This is an example image" title="This is an example image">
+<p>This tool is used to create masks from other NASA remote sensing products with general quality assessment bit like <a href="https://github.com/haoliangyu/pymasker/wiki/MODIS-use-sample" target="_blank" rel="external">MODIS land products</a>. As each portion of QA bits suggests a certain condition of the image, this toolbox simply examines the value of specific portion of QA bits and generates mask accordingly. Required inputs include:</p>
+<ul>
+<li><p><strong>Quality Assessment Band</strong></p>
 </li>
-<li><p>0.2.3</p>
-<ul>
-<li>Restructure package</li>
-</ul>
+<li><p><strong>Bit Position</strong> that indicates where the desired portion of bits starts.</p>
+</li>
+<li><p><strong>Bit Length</strong> that indicates the length of bits.</p>
+</li>
+<li><p><strong>Bit Value</strong> that indicates the desired situation.</p>
+</li>
+<li><p><strong>Output Mask</strong> saving path</p>
 </li>
 </ul>
 
@@ -253,7 +245,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/gis/">gis</a> <a class="tag tag--primary tag--small t-link" href="/tags/python/">python</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/landsat-8/">landsat 8</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
 
             </div>
         
@@ -262,7 +254,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/"  data-tooltip="Comparison of different sampling rules in SVM classification">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -270,7 +262,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/" data-tooltip="Making masks with Landsat 8 Quality Assessment band using Python">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -285,17 +277,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -341,7 +333,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/"  data-tooltip="Comparison of different sampling rules in SVM classification">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -349,7 +341,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/" data-tooltip="Making masks with Landsat 8 Quality Assessment band using Python">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -364,17 +356,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -400,17 +392,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/01/21/Pymasker/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>

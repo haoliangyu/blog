@@ -13,13 +13,13 @@
     <meta name="description" content="Days ago when I published the first version of pymasker for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read tech">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Making masks from Quality Control bits of MODIS land products in Python (Update)">
-<meta property="og:url" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
 <meta property="og:description" content="Days ago when I published the first version of pymasker for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read tech">
-<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png">
-<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png">
-<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png">
-<meta property="og:image" content="http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png">
 <meta property="og:updated_time" content="2015-12-06T03:13:39.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Making masks from Quality Control bits of MODIS land products in Python (Update)">
@@ -188,9 +188,9 @@
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Thu Feb 19 2015 21:23:29 GMT-0500">
+    <time itemprop="datePublished" content="Fri Feb 20 2015 10:23:29 GMT+0800">
 	
-		    Feb 19, 2015
+		    Feb 20, 2015
     	
     </time>
     
@@ -208,11 +208,11 @@
             <p>Days ago when I published the first version of <em><a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a></em> for masking Landsat 8 image, Dr. Robert A. Washington-Allen suggested me whether the package would be used for MODIS products. After I read technical documents of MODIS, I realize that the Quality Control bits of MOIDS products has the same structure as the QA band of Landsat 8. Therefore, I update the package to adapt MODIS products (or other NASA products with similar QC/QA bits).<br><a id="more"></a><br>In this article, I am going to show how to extract masks from the Quality Control bits of MODIS land product in python.</p>
 <h2 id="MODIS_QC/QA_bits">MODIS QC/QA bits</h2><hr>
 <p>The QC/QA bits of MODIS is a binary number, of which each section represents the state of certain condition. Just take the 250m resolution land surface reflectance product (MOD09GQ) as example. The QC band (maybe called QA band in other products) is the fourth band of the HDF dataset. It is a unsigned 16-bit band. Each value on the pixel indicates a combination of pixel conditions. We can interpret the value by separating its binary form.</p>
-<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png" alt="This is an example image" title="This is an example image">
+<img src="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitstructure.png" alt="This is an example image" title="This is an example image">
 <p>The individual bits within a binary number are read from let to right as described in the following table.</p>
-<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png" alt="This is an example image" title="This is an example image">
+<img src="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bittable.png" alt="This is an example image" title="This is an example image">
 <p>Therefore when we put the interpretation back to the bit string, we are able to know what it indicates.</p>
-<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png" alt="This is an example image" title="This is an example image">
+<img src="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/bitsample.png" alt="This is an example image" title="This is an example image">
 <p>As this binary number is 4096 in integer, all pixels having value 4096 in the QC band are high quality and cloud free with atmosphere correction, but no adjacency correction.</p>
 <p>The structure of QC/QA bits vary in different MODISO products and different data collection. For full detail for each product, please have a look at</p>
 <ul>
@@ -235,7 +235,7 @@
 <p>You need to know the bit information to generate certain masks. For example, we want a  mask only wit high quality pixels. In the previous section we have known that the quality bits start at the beginning (position 0) and the length is 2. We also know that <em>‘00’</em> indicate corrected product produced at ideal quality in all bands. Therefore, the high quality mask could be made with</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get high quality mask</span></span><br><span class="line">hqmask = modismasker.getmask(bitpos = <span class="number">0</span>, bitlen = <span class="number">2</span>, value = <span class="string">'00'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save the mask as a TIF file</span></span><br><span class="line">modismasker.savetif(hqmask, <span class="string">'result.tif'</span>)</span><br></pre></td></tr></table></figure>
 <p>Then you can get a binary mask where 1 represents the high quality pixel.</p>
-<img src="/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png" alt="This is an example image" title="This is an example image">
+<img src="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/hqmask.png" alt="This is an example image" title="This is an example image">
 <h2 id="Update">Update</h2><p><em>Pyamsker</em> has provided a new class for producing QA mask since version 0.2.2. So you don’t have to look for and remember those binary bits (Well I don’t like them, too).</p>
 <p>I have wrapped quality levels for MODIS land products.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymasker <span class="keyword">import</span> modisquality</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product produced at ideal quality for all bands.</span></span><br><span class="line">quality = modisquality.high</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product produced at less than ideal quality for some or all bands.</span></span><br><span class="line">quality = modisquality.medium</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product not produced due to some reasons for some or all bands.</span></span><br><span class="line">quality = modisquality.low</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corrected product not produced due to cloud effects for all bands.</span></span><br><span class="line">quality = modisquality.low_cloud</span><br></pre></td></tr></table></figure>
@@ -263,7 +263,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/11/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -271,7 +271,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -286,17 +286,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -342,7 +342,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/11/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"  data-tooltip="Yet another way to edit your raster layer in ArcMap - Paint on it!">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -350,7 +350,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/" data-tooltip="Editing single pixels of raster layer in ArcMap with just a few clicks">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -365,17 +365,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -401,17 +401,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/19/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
