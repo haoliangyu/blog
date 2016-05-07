@@ -6,22 +6,20 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Generating masks from Landsat 8 image in ArcMap - HaoliangYu.io</title>
+    <title>Making Map with Leaflet in TypeScript - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
-    <meta name="description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+    <meta name="description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Generating masks from Landsat 8 image in ArcMap">
-<meta property="og:url" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/index.html">
+<meta property="og:title" content="Making Map with Leaflet in TypeScript">
+<meta property="og:url" content="http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
-<meta property="og:image" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png">
-<meta property="og:image" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png">
-<meta property="og:updated_time" content="2016-02-25T05:55:57.679Z">
+<meta property="og:description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
+<meta property="og:updated_time" content="2016-05-07T23:16:49.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Generating masks from Landsat 8 image in ArcMap">
-<meta name="twitter:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+<meta name="twitter:title" content="Making Map with Leaflet in TypeScript">
+<meta name="twitter:description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
     
     
     
@@ -83,7 +81,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-                    <span class="sidebar-button-desc">首页</span>
+                    <span class="sidebar-button-desc">Home</span>
                 </a>
         </li>
         
@@ -95,7 +93,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-                    <span class="sidebar-button-desc">分类</span>
+                    <span class="sidebar-button-desc">Categories</span>
                 </a>
         </li>
         
@@ -107,7 +105,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-                    <span class="sidebar-button-desc">标签</span>
+                    <span class="sidebar-button-desc">Tags</span>
                 </a>
         </li>
         
@@ -119,7 +117,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-                    <span class="sidebar-button-desc">归档</span>
+                    <span class="sidebar-button-desc">Archives</span>
                 </a>
         </li>
         
@@ -131,7 +129,7 @@
                     >
                 
                     <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                    <span class="sidebar-button-desc">关于</span>
+                    <span class="sidebar-button-desc">About Me</span>
                 </a>
         </li>
         
@@ -162,7 +160,7 @@
                     <a  class="sidebar-button-link " href="mailto:haoliang.yu@outlook.com" target="_blank">
                 
                     <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                    <span class="sidebar-button-desc">邮箱</span>
+                    <span class="sidebar-button-desc">Mail</span>
                 </a>
         </li>
         
@@ -182,17 +180,17 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Generating masks from Landsat 8 image in ArcMap
+            Making Map with Leaflet in TypeScript
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Sat May 09 2015 09:38:02 GMT+0800">
+    <time itemprop="datePublished" content="Sat May 07 2016 00:00:00 GMT-0400">
 	
-		    May 09, 2015
+		    07 May 2016
     	
     </time>
     
-        <span>发布在 </span>
+        <span>dans </span>
         
     <a class="category-link" href="/categories/GIS/">GIS</a>
 
@@ -203,36 +201,19 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br><a id="more"></a><br>The <strong>ArcMasking</strong> toolbox contains two script tools, one designed for Landsat 8 QA band and one for generic quality assessment bits in other NASA remote sensing products like MODIS.</p>
-<p>This tool can be download at <a href="https://github.com/haoliangyu/arcmasker/releases/tag/ArcMasker_0.1" target="_blank" rel="external">GitHub</a>. After unzipping the package, you could open the ArcMasker.tbx file at the Catalog window in ArcMap and find following tools.</p>
-<h2 id="From_Landsat_8_QA_Band">From Landsat 8 QA Band</h2><hr>
-<img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png" alt="This is an example image" title="This is an example image">
-<p>This tool is used to create masks from the Quality Assessment band of Landsat 8 OLI image. It requires several inputs:</p>
-<ul>
-<li><p><strong>Quality Assessment Band</strong> of Landsat 8 image</p>
-</li>
-<li><p><strong>Mask type</strong> including cloud, cirrus, water, snow or vegetation</p>
-</li>
-<li><p><strong>Confidence Level</strong> that indicates the likelihood of existing of specific situation. You can also choose to include confidence level above what has been selected.</p>
-</li>
-<li><p><strong>Output Mask</strong> saving path</p>
-</li>
-</ul>
-<h2 id="From_Quality_Assessment_Bits">From Quality Assessment Bits</h2><hr>
-<img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png" alt="This is an example image" title="This is an example image">
-<p>This tool is used to create masks from other NASA remote sensing products with general quality assessment bit like <a href="https://github.com/haoliangyu/pymasker/wiki/MODIS-use-sample" target="_blank" rel="external">MODIS land products</a>. As each portion of QA bits suggests a certain condition of the image, this toolbox simply examines the value of specific portion of QA bits and generates mask accordingly. Required inputs include:</p>
-<ul>
-<li><p><strong>Quality Assessment Band</strong></p>
-</li>
-<li><p><strong>Bit Position</strong> that indicates where the desired portion of bits starts.</p>
-</li>
-<li><p><strong>Bit Length</strong> that indicates the length of bits.</p>
-</li>
-<li><p><strong>Bit Value</strong> that indicates the desired situation.</p>
-</li>
-<li><p><strong>Output Mask</strong> saving path</p>
-</li>
-</ul>
+            <p>Recently I am working on a web mapping project based on <a href="https://angular.io/" target="_blank" rel="external">Angular 2</a> , an increasingly popular succeeding framework of <a href="https://angularjs.org/" target="_blank" rel="external">Angular</a>. In this post, I will briefly talk about how to make a map with <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> in TypeScript, whichi is also used in Angular 2.</p>
+<a id="more"></a>
+<h3 id="Preparation">Preparation</h3><p>I assume you have had some basic understanding on TypeScript. If not, the <a href="https://www.typescriptlang.org/docs/tutorial.html" target="_blank" rel="external">official documentation</a> is an excellent start. (if you are a former .Net developer, you must feel familiar - it’s basically a js-like C#)</p>
+<p>Also, since TypeScript is still a developing language proposed by Microsoft, mainstream browsers don’t provide support to TypeScript directly. To run a web project in TypeScript, you will probably need to compile it into JavaScript. There are several choice of compiler for selection, but that’s out of the scope of this post. If you are also interested in Angular 2, the <a href="another link here">5-minutues Angular 2 tutorial</a> provides a simple but fully functional setup.</p>
+<h3 id="Type_Declaration">Type Declaration</h3><p>The first step of using Leaflet in TypeScript is to add the type declaration file to your project, which describes the class interface of Leaflet.js. This file could be downloaded at the <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/leaflet/leaflet.d.ts" target="_blank" rel="external">DefinitelyTyped repository</a>. Or in a simpler way (if you are <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> lover), install the <a href="http://definitelytyped.org/tsd/" target="_blank" rel="external">tsd</a> tool globally and run the following command in your project folder:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsd init</span><br><span class="line">tsd install leaflet --save</span><br></pre></td></tr></table></figure>
+<p>Then just add the file reference to your script file:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path="path/to/leaflet.d.ts" /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Mapping">Mapping</h3><p>If you have added a <code>&lt;div&gt;</code> tag (or whatever…) with id <code>map</code>, the way to add a map is just similar to what we do in JavaScript:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> L.Map(<span class="string">'map'</span>, &#123;</span><br><span class="line">  center: <span class="keyword">new</span> L.LatLng(<span class="number">40.731253</span>, -<span class="number">73.996139</span>),</span><br><span class="line">  zoom: <span class="number">12</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>The only difference is that now all Leaflet objects are classes that need to be explicitly newed. We are able to follow exactly the same methodology in JavaScript to manage Leaflet. For example, this shows how to bind an event handler to a L.Marker click event:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map.on(<span class="string">'click'</span>, (e: LeafletMouseEvent) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> marker = L.marker(e.latlng)</span><br><span class="line">  .bindPopup(<span class="string">'Popup'</span>)</span><br><span class="line">  .addTo(map)</span><br><span class="line">  .openPopup();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Hope you enjoy the journey with TypeScript :)</p>
 
             
                 
@@ -243,9 +224,9 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">标签</span><br/>
+                <span class="text-color-light text-small">TAGGÉ DANS</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/landsat/">landsat</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
 
             </div>
         
@@ -254,17 +235,17 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
                 </a>
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/" data-tooltip="Gtran: a promised, consistent, user-friendly GeoJson conversion package">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -277,17 +258,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -333,17 +314,17 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
                 </a>
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/" data-tooltip="Gtran: a promised, consistent, user-friendly GeoJson conversion package">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -356,17 +337,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -392,18 +373,18 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
+                <i class="fa fa-google-plus"></i><span class="">Partager sur Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
+                <i class="fa fa-facebook-official"></i><span>Partager sur Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/">
+                <i class="fa fa-twitter"></i><span>Partager sur Twitter</span>
             </a>
         </li>
     </ul>
@@ -422,17 +403,27 @@
         
             <h4 id="about-card-name">Haoliang Yu</h4>
         
-            <h5 id="about-card-bio"><p>拥抱开源</p>
-</h5>
+            <h5 id="about-card-bio">
+              a lover to map, a participant to open-source software, an advocate for open data
+              <!-- <p>author.bio</p>
+ -->
+            </h5>
         
         
             <h5 id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>地理数据工程师</p>
-
+                Full-Stask GIS Developper
+                <!-- <p>author.job</p>
+ -->
             </h5>
         
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Buffalo, NY
+            </h5>
         
     </div>
 </div>

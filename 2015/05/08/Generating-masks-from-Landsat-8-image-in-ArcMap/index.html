@@ -6,20 +6,22 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Gtran: a promised, consistent, user-friendly GeoJson conversion package - HaoliangYu.io</title>
+    <title>Generating masks from Landsat 8 image in ArcMap - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
-    <meta name="description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
+    <meta name="description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Gtran: a promised, consistent, user-friendly GeoJson conversion package">
-<meta property="og:url" content="http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/index.html">
+<meta property="og:title" content="Generating masks from Landsat 8 image in ArcMap">
+<meta property="og:url" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
-<meta property="og:updated_time" content="2016-02-25T12:57:26.739Z">
+<meta property="og:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+<meta property="og:image" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png">
+<meta property="og:image" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png">
+<meta property="og:updated_time" content="2016-02-25T05:55:57.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gtran: a promised, consistent, user-friendly GeoJson conversion package">
-<meta name="twitter:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
+<meta name="twitter:title" content="Generating masks from Landsat 8 image in ArcMap">
+<meta name="twitter:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
     
     
     
@@ -180,19 +182,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Gtran: a promised, consistent, user-friendly GeoJson conversion package
+            Generating masks from Landsat 8 image in ArcMap
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Thu Feb 25 2016 00:00:00 GMT-0500">
+    <time itemprop="datePublished" content="Fri May 08 2015 21:38:02 GMT-0400">
 	
-		    25 Feb 2016
+		    08 May 2015
     	
     </time>
     
         <span>dans </span>
         
-    <a class="category-link" href="/categories/Project/">Project</a>
+    <a class="category-link" href="/categories/GIS/">GIS</a>
 
 
     
@@ -201,51 +203,36 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?</p>
-<a id="more"></a>
-<p>GeoJson is one of simplest geographic data format. If we search for data conversion packages at <a href="https://www.npmjs.com/" target="_blank" rel="external">npm.org</a>, there will be a long list packages: <a href="https://www.npmjs.com/package/shapefile" target="_blank" rel="external">shapefile</a> for shapefile, <a href="https://www.npmjs.com/package/tokml" target="_blank" rel="external">tokml</a> for kml, <a href="https://www.npmjs.com/package/geojson2dsv" target="_blank" rel="external">geojson2dcsv</a> for csv, <a href="https://www.npmjs.com/package/osm-and-geojson" target="_blank" rel="external">osm-and-geojson</a> for osm package, <a href="https://www.npmjs.com/package/geojson2" target="_blank" rel="external">geojson2</a> for multiple formats, <a href="https://www.npmjs.com/package/ogr2ogr" target="_blank" rel="external">org2org</a> and <a href="https://www.npmjs.com/package/gdal" target="_blank" rel="external">gdal</a> as data solutions… However, I still felt very inconvenient when I developed a GeoJson handling module a few months ago.</p>
-<h1 id="Why_inconvenient?">Why inconvenient?</h1><p>From my point of view, there are a few problems:</p>
+            <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br><a id="more"></a><br>The <strong>ArcMasking</strong> toolbox contains two script tools, one designed for Landsat 8 QA band and one for generic quality assessment bits in other NASA remote sensing products like MODIS.</p>
+<p>This tool can be download at <a href="https://github.com/haoliangyu/arcmasker/releases/tag/ArcMasker_0.1" target="_blank" rel="external">GitHub</a>. After unzipping the package, you could open the ArcMasker.tbx file at the Catalog window in ArcMap and find following tools.</p>
+<h2 id="From_Landsat_8_QA_Band">From Landsat 8 QA Band</h2><hr>
+<img src="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png" alt="This is an example image" title="This is an example image">
+<p>This tool is used to create masks from the Quality Assessment band of Landsat 8 OLI image. It requires several inputs:</p>
 <ul>
-<li><p>Most packages are designed for one specific data format.</p>
+<li><p><strong>Quality Assessment Band</strong> of Landsat 8 image</p>
 </li>
-<li><p>Each package is written in a style different from the other.</p>
+<li><p><strong>Mask type</strong> including cloud, cirrus, water, snow or vegetation</p>
 </li>
-<li><p>Some packages require external libraries,like <a href="http://www.gdal.org/" target="_blank" rel="external">gdal</a>, which aren’t npm-able.</p>
+<li><p><strong>Confidence Level</strong> that indicates the likelihood of existing of specific situation. You can also choose to include confidence level above what has been selected.</p>
 </li>
-<li><p>Most package aren’t asynchronous or promised. (maybe just a personal problem)</p>
+<li><p><strong>Output Mask</strong> saving path</p>
 </li>
 </ul>
-<p>As a result, in order to make them work together, one will need to learn how to use these diverse packages, customize code to handle their diverse input/output, and write some comments for the future project maintainer.</p>
-<p>Well, it’s not very fun.</p>
-<h1 id="Gtran:_the_solution">Gtran: the solution</h1><p>The programmer’s way to handle unhappiness is to write something that make him happy :) What I want is a package with following features:</p>
+<h2 id="From_Quality_Assessment_Bits">From Quality Assessment Bits</h2><hr>
+<img src="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png" alt="This is an example image" title="This is an example image">
+<p>This tool is used to create masks from other NASA remote sensing products with general quality assessment bit like <a href="https://github.com/haoliangyu/pymasker/wiki/MODIS-use-sample" target="_blank" rel="external">MODIS land products</a>. As each portion of QA bits suggests a certain condition of the image, this toolbox simply examines the value of specific portion of QA bits and generates mask accordingly. Required inputs include:</p>
 <ul>
-<li><p>Able to work with multiple formats</p>
+<li><p><strong>Quality Assessment Band</strong></p>
 </li>
-<li><p>Consistent and simple: functions and their input/output</p>
+<li><p><strong>Bit Position</strong> that indicates where the desired portion of bits starts.</p>
 </li>
-<li><p>Completely npm-able</p>
+<li><p><strong>Bit Length</strong> that indicates the length of bits.</p>
 </li>
-<li><p>Asynchronous</p>
+<li><p><strong>Bit Value</strong> that indicates the desired situation.</p>
+</li>
+<li><p><strong>Output Mask</strong> saving path</p>
 </li>
 </ul>
-<p>And here comes <strong><a href="https://www.npmjs.com/package/gtran" target="_blank" rel="external">gtran</a></strong>.</p>
-<h1 id="What_does_gtran_do?">What does gtran do?</h1><p><strong>gtran</strong> wraps several existing npm packages to provide</p>
-<ul>
-<li><p>from/to conversion of multiple formats: .shp, .kml, .kmz, .csv, and TopoJson.</p>
-</li>
-<li><p>consistent functions: from[format name]() and to[format name]()</p>
-</li>
-<li><p>simple input/output: geojson or file name</p>
-</li>
-<li><p>asynchronous ability with your favorite promise library (<a href="https://www.npmjs.com/package/bluebird" target="_blank" rel="external">bluebird</a>, <a href="https://www.npmjs.com/package/promise" target="_blank" rel="external">promise</a>, <a href="https://www.npmjs.com/package/q" target="_blank" rel="external">Q</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">native</a>).</p>
-</li>
-<li><p>minimal installation: each format support is provide by a child package gtran-xxx.</p>
-</li>
-</ul>
-<p>It could be installed with <code>npm install gtran</code>.</p>
-<h1 id="How_could_it_be_used?">How could it be used?</h1><p>A complete use guide could be found at the <a href="https://github.com/haoliangyu/gtran" target="_blank" rel="external">GitHub repo</a> and here is a small use case:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var gtran = require('gtran');</span><br><span class="line"></span><br><span class="line"># Specify the promise library if necessary</span><br><span class="line">gtran.setPromiseLib(require('bluebird'));</span><br><span class="line"></span><br><span class="line"># Read shapefile</span><br><span class="line">gtran.fromShp('source.shp')</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into shapefile</span><br><span class="line">gtran.toShp(geojson, 'point.shp')</span><br><span class="line">.then(function(fileNames) &#123;</span><br><span class="line">    console.log('SHP files have been saved at:' + fileNames.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Read csv file</span><br><span class="line"># Assume the test.csv has two columns: latitude and longitude</span><br><span class="line">gtran.fromCSV('source.csv', &#123;</span><br><span class="line">    mapping: &#123; x: 'longitude', y: 'latitude' &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into a csv file</span><br><span class="line">gtran.toCSV(geojson, 'point.csv')</span><br><span class="line">.then(function(fileName) &#123;</span><br><span class="line">    console.log('CSV file has been saved at:' + fileName);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Hope you enjoy it. If you find a bug or want a new feature, just create an <a href="https://github.com/haoliangyu/gtran/issues" target="_blank" rel="external">issue</a> and I will appreciate it :-)</p>
 
             
                 
@@ -258,7 +245,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGÉ DANS</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/gis/">gis</a> <a class="tag tag--primary tag--small t-link" href="/tags/javascript/">javascript</a> <a class="tag tag--primary tag--small t-link" href="/tags/project/">project</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/landsat/">landsat</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
 
             </div>
         
@@ -267,7 +254,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/"  data-tooltip="Making Map with Leaflet in TypeScript">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
@@ -275,7 +262,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/" data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/21/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
@@ -290,17 +277,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -346,7 +333,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/Making-A-Map-with-Leaflet-in-TypeScript/"  data-tooltip="Making Map with Leaflet in TypeScript">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PRÉCÉDENT</span>
@@ -354,7 +341,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/" data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/21/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">SUIVANT</span>
                     <i class="fa fa-angle-right"></i>
@@ -369,17 +356,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -405,17 +392,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-google-plus"></i><span class="">Partager sur Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-facebook-official"></i><span>Partager sur Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
                 <i class="fa fa-twitter"></i><span>Partager sur Twitter</span>
             </a>
         </li>
