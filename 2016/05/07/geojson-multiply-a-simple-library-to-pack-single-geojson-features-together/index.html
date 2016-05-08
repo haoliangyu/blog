@@ -6,20 +6,20 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>gtran: a promised, consistent, user-friendly GeoJson conversion package - HaoliangYu.io</title>
+    <title>geojson-multiply: a simple package to pack single geojson features together - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
-    <meta name="description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
+    <meta name="description" content="Some PostGIS functions only accept multi type geometry, so I write a simple geojson utility package to help me aggregate geojson features.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="gtran: a promised, consistent, user-friendly GeoJson conversion package">
-<meta property="og:url" content="http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/index.html">
+<meta property="og:title" content="geojson-multiply: a simple package to pack single geojson features together">
+<meta property="og:url" content="http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
-<meta property="og:updated_time" content="2016-05-08T03:02:16.207Z">
+<meta property="og:description" content="Some PostGIS functions only accept multi type geometry, so I write a simple geojson utility package to help me aggregate geojson features.">
+<meta property="og:updated_time" content="2016-05-08T03:13:43.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gtran: a promised, consistent, user-friendly GeoJson conversion package">
-<meta name="twitter:description" content="Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?">
+<meta name="twitter:title" content="geojson-multiply: a simple package to pack single geojson features together">
+<meta name="twitter:description" content="Some PostGIS functions only accept multi type geometry, so I write a simple geojson utility package to help me aggregate geojson features.">
     
     
     
@@ -180,19 +180,19 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            gtran: a promised, consistent, user-friendly GeoJson conversion package
+            geojson-multiply: a simple package to pack single geojson features together
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Thu Feb 25 2016 00:00:00 GMT-0500">
+    <time itemprop="datePublished" content="Sat May 07 2016 00:00:00 GMT-0400">
 	
-		    Feb 25, 2016
+		    May 07, 2016
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/Project/">Project</a>
+    <a class="category-link" href="/categories/GIS/">GIS</a>
 
 
     
@@ -201,51 +201,32 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?</p>
+            <p>Some PostGIS functions only accept multi type geometry, so I write a simple geojson utility package to help me aggregate geojson features.</p>
 <a id="more"></a>
-<p>GeoJson is one of simplest geographic data format. If we search for data conversion packages at <a href="https://www.npmjs.com/" target="_blank" rel="external">npm.org</a>, there will be a long list packages: <a href="https://www.npmjs.com/package/shapefile" target="_blank" rel="external">shapefile</a> for shapefile, <a href="https://www.npmjs.com/package/tokml" target="_blank" rel="external">tokml</a> for kml, <a href="https://www.npmjs.com/package/geojson2dsv" target="_blank" rel="external">geojson2dcsv</a> for csv, <a href="https://www.npmjs.com/package/osm-and-geojson" target="_blank" rel="external">osm-and-geojson</a> for osm package, <a href="https://www.npmjs.com/package/geojson2" target="_blank" rel="external">geojson2</a> for multiple formats, <a href="https://www.npmjs.com/package/ogr2ogr" target="_blank" rel="external">org2org</a> and <a href="https://www.npmjs.com/package/gdal" target="_blank" rel="external">gdal</a> as data solutions… However, I still felt very inconvenient when I developed a GeoJson handling module a few months ago.</p>
-<h1 id="Why_inconvenient?">Why inconvenient?</h1><p>From my point of view, there are a few problems:</p>
+<p>The basic purpose of <code>geojson-multiply</code> is to generate a <code>MutliPoint</code>/<code>MultiLineString</code>/<code>MultiPolygon</code> geojson feature from many <code>Point</code>/<code>LineString</code>/<code>Polygon</code> geojson features. So this package provides a function</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">multiply</span><span class="params">(geojsons[, options])</span></span></span><br></pre></td></tr></table></figure>
+<p>Where the <code>geojsons</code> could be a geojson feature, an array of geojson features, or a geojson feature collection</p>
+<p>Not just the coordinates, the <code>multiply()</code> also supports the aggregation of properties. Its <code>options</code> parameter accepts two input:</p>
 <ul>
-<li><p>Most packages are designed for one specific data format.</p>
+<li><p><code>properties</code> - the default properties of result geojson</p>
 </li>
-<li><p>Each package is written in a style different from the other.</p>
+<li><p><code>onEachFeature</code> - a function to aggregate properties. It has four parameters:</p>
+<ul>
+<li><p><code>properties</code> - the result geojson’s properties</p>
 </li>
-<li><p>Some packages require external libraries,like <a href="http://www.gdal.org/" target="_blank" rel="external">gdal</a>, which aren’t npm-able.</p>
+<li><p><code>featureProp</code> - input feature geojson’s properties</p>
 </li>
-<li><p>Most package aren’t asynchronous or promised. (maybe just a personal problem)</p>
+<li><p><code>index</code> - input feature geojson’s index in the array</p>
+</li>
+<li><p><code>geojsons</code> - geojson array.</p>
 </li>
 </ul>
-<p>As a result, in order to make them work together, one will need to learn how to use these diverse packages, customize code to handle their diverse input/output, and write some comments for the future project maintainer.</p>
-<p>Well, it’s not very fun.</p>
-<h1 id="Gtran:_the_solution">Gtran: the solution</h1><p>The programmer’s way to handle unhappiness is to write something that make him happy :) What I want is a package with following features:</p>
-<ul>
-<li><p>Able to work with multiple formats</p>
-</li>
-<li><p>Consistent and simple: functions and their input/output</p>
-</li>
-<li><p>Completely npm-able</p>
-</li>
-<li><p>Asynchronous</p>
 </li>
 </ul>
-<p>And here comes <strong><a href="https://www.npmjs.com/package/gtran" target="_blank" rel="external">gtran</a></strong>.</p>
-<h1 id="What_does_gtran_do?">What does gtran do?</h1><p><strong>gtran</strong> wraps several existing npm packages to provide</p>
-<ul>
-<li><p>from/to conversion of multiple formats: .shp, .kml, .kmz, .csv, and TopoJson.</p>
-</li>
-<li><p>consistent functions: from[format name]() and to[format name]()</p>
-</li>
-<li><p>simple input/output: geojson or file name</p>
-</li>
-<li><p>asynchronous ability with your favorite promise library (<a href="https://www.npmjs.com/package/bluebird" target="_blank" rel="external">bluebird</a>, <a href="https://www.npmjs.com/package/promise" target="_blank" rel="external">promise</a>, <a href="https://www.npmjs.com/package/q" target="_blank" rel="external">Q</a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">native</a>).</p>
-</li>
-<li><p>minimal installation: each format support is provide by a child package gtran-xxx.</p>
-</li>
-</ul>
-<p>It could be installed with <code>npm install gtran</code>.</p>
-<h1 id="How_could_it_be_used?">How could it be used?</h1><p>A complete use guide could be found at the <a href="https://github.com/haoliangyu/gtran" target="_blank" rel="external">GitHub repo</a> and here is a small use case:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">var gtran = require('gtran');</span><br><span class="line"></span><br><span class="line"># Specify the promise library if necessary</span><br><span class="line">gtran.setPromiseLib(require('bluebird'));</span><br><span class="line"></span><br><span class="line"># Read shapefile</span><br><span class="line">gtran.fromShp('source.shp')</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into shapefile</span><br><span class="line">gtran.toShp(geojson, 'point.shp')</span><br><span class="line">.then(function(fileNames) &#123;</span><br><span class="line">    console.log('SHP files have been saved at:' + fileNames.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Read csv file</span><br><span class="line"># Assume the test.csv has two columns: latitude and longitude</span><br><span class="line">gtran.fromCSV('source.csv', &#123;</span><br><span class="line">    mapping: &#123; x: 'longitude', y: 'latitude' &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line">    var geojson = object;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"># Save geojson into a csv file</span><br><span class="line">gtran.toCSV(geojson, 'point.csv')</span><br><span class="line">.then(function(fileName) &#123;</span><br><span class="line">    console.log('CSV file has been saved at:' + fileName);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Hope you enjoy it. If you find a bug or want a new feature, just create an <a href="https://github.com/haoliangyu/gtran/issues" target="_blank" rel="external">issue</a> and I will appreciate it :-)</p>
+<p>It takes the form of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="external">Array.reduce()</a> and make the aggregation pretty straightforward:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> multiply = <span class="built_in">require</span>(<span class="string">'geojson-multiply'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> geojsonA = &#123;</span><br><span class="line">  type: <span class="string">'Feature'</span>,</span><br><span class="line">  geometry: &#123; type: <span class="string">'Point'</span>, coordinates: [<span class="number">12</span>, <span class="number">43</span>] &#125;,</span><br><span class="line">  properties: &#123; count: <span class="number">5</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> geojsonB = &#123;</span><br><span class="line">  type: <span class="string">'Feature'</span>,</span><br><span class="line">  geometry: &#123; type: <span class="string">'Point'</span>, coordinates: [<span class="number">13</span>, <span class="number">34</span>] &#125;,</span><br><span class="line">  properties: &#123; count: <span class="number">5</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> onEachFeature = <span class="function"><span class="keyword">function</span>(<span class="params">properties, featureProp</span>) </span>&#123;</span><br><span class="line">  properties.count += featureProp.count;</span><br><span class="line">  <span class="keyword">return</span> properties;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = multiply([geojsonA, geojsonB], &#123;</span><br><span class="line">  properties: &#123; count: <span class="number">0</span> &#125;,</span><br><span class="line">  onEachFeature: onEachFeature</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">The reuslt geojson should be</span><br><span class="line">&#123;</span><br><span class="line">  type: 'Feature'</span><br><span class="line">  geometry: &#123;</span><br><span class="line">    type: 'MultiPoint',</span><br><span class="line">    coordinates: [[12, 43], [14, 34]]</span><br><span class="line">  &#125;,</span><br><span class="line">  properties: &#123;</span><br><span class="line">    count: 10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<p>This package has been published at <a href="https://www.npmjs.com/package/geojson-multiply" target="_blank" rel="external">npm</a>. If you think it’s helpful, just install and try!</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install geojson-<span class="built_in">multiply</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
 
             
                 
@@ -258,7 +239,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/gis/">gis</a> <a class="tag tag--primary tag--small t-link" href="/tags/javascript/">javascript</a> <a class="tag tag--primary tag--small t-link" href="/tags/project/">project</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/geojson/">geojson</a> <a class="tag tag--primary tag--small t-link" href="/tags/javascript/">javascript</a>
 
             </div>
         
@@ -267,7 +248,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/"  data-tooltip="Making Map with Leaflet in TypeScript">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -275,7 +256,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/" data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/" data-tooltip="Making Map with Leaflet in TypeScript">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -290,17 +271,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -346,7 +327,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/"  data-tooltip="Making Map with Leaflet in TypeScript">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -354,7 +335,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/" data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/" data-tooltip="Making Map with Leaflet in TypeScript">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -369,17 +350,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -405,17 +386,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-geojson-features-together/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
