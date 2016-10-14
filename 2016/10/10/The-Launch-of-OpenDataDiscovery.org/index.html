@@ -6,21 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Lazy man&#39;s package of nationwide U.S. boundaries - HaoliangYu.io</title>
+    <title>The Launch of OpenDataDiscovery.org - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta name="description" content="I have been doing GIS work for quite a while and I do hate to download data from multiple sites every time. So I decide to collect those commonly geospatial data and make my own database. Of course, l">
+    <meta name="description" content="After several months’ work at my spare time, I finally publish the first version of my side-project OpenDataDiscovery.org. It is a step to answer this very simple question in my mind: How many open da">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Lazy man's package of nationwide U.S. boundaries">
-<meta property="og:url" content="http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/index.html">
+<meta property="og:title" content="The Launch of OpenDataDiscovery.org">
+<meta property="og:url" content="http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="I have been doing GIS work for quite a while and I do hate to download data from multiple sites every time. So I decide to collect those commonly geospatial data and make my own database. Of course, l">
-<meta property="og:updated_time" content="2016-01-24T05:00:00.000Z">
+<meta property="og:description" content="After several months’ work at my spare time, I finally publish the first version of my side-project OpenDataDiscovery.org. It is a step to answer this very simple question in my mind: How many open da">
+<meta property="og:image" content="http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/map.png">
+<meta property="og:updated_time" content="2016-10-14T03:54:25.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lazy man's package of nationwide U.S. boundaries">
-<meta name="twitter:description" content="I have been doing GIS work for quite a while and I do hate to download data from multiple sites every time. So I decide to collect those commonly geospatial data and make my own database. Of course, l">
+<meta name="twitter:title" content="The Launch of OpenDataDiscovery.org">
+<meta name="twitter:description" content="After several months’ work at my spare time, I finally publish the first version of my side-project OpenDataDiscovery.org. It is a step to answer this very simple question in my mind: How many open da">
     
     
         
@@ -186,13 +187,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Lazy man&#39;s package of nationwide U.S. boundaries
+            The Launch of OpenDataDiscovery.org
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2015-12-05T00:00:00-05:00">
+    <time itemprop="datePublished" datetime="2016-10-10T00:00:00-04:00">
 	
-		    Dec 05, 2015
+		    Oct 10, 2016
     	
     </time>
     
@@ -208,58 +209,17 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>I have been doing GIS work for quite a while and I do hate to download data from multiple sites every time. So I decide to collect those commonly geospatial data and make my own database. Of course, like all open-source people do, I’d love to share my work with you. The first release is the U.S. nationwide U.S. boundary. This dataset include <strong>nation</strong>, <strong>state</strong>, <strong>county</strong>, <strong>place</strong>, <strong>census block</strong>, and <strong>census tract</strong>. The source data come from U.S. Census Bureau and you can find the metadata <a href="https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html" target="_blank" rel="external">here</a>.</p>
-<p>Multiple formats provided: <strong>shapefile</strong>, <strong>geojson</strong>, and a <strong>postgis</strong> database dump.<a id="more"></a></p>
-<h2 id="shapefile/geojson">shapefile/geojson</h2><table>
-<thead>
-<tr>
-<th>Resolution</th>
-<th>1:500,000</th>
-<th>1:5,000,000</th>
-<th>1:20,000,000</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nation</td>
-<td></td>
-<td><a href="http://1drv.ms/1Q7B59y" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1Q7Bgln" target="_blank" rel="external">GeoJson</a></td>
-<td><a href="http://1drv.ms/1OaB9j0" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1Q7BhFR" target="_blank" rel="external">GeoJson</a></td>
-</tr>
-<tr>
-<td>State</td>
-<td><a href="http://1drv.ms/1OaBfqW" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAjUs" target="_blank" rel="external">GeoJson</a></td>
-<td><a href="http://1drv.ms/1XKAaAg" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAmzF" target="_blank" rel="external">GeoJson</a></td>
-<td><a href="http://1drv.ms/1XKAcsb" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAu25" target="_blank" rel="external">GeoJson</a></td>
-</tr>
-<tr>
-<td>County</td>
-<td><a href="http://1drv.ms/1YR7XVF" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAjUs" target="_blank" rel="external">GeoJson</a></td>
-<td><a href="http://1drv.ms/1YR81EY" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAmzF" target="_blank" rel="external">GeoJson</a></td>
-<td><a href="http://1drv.ms/1YR82sq" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1XKAu25" target="_blank" rel="external">GeoJson</a></td>
-</tr>
-<tr>
-<td>Census Tract</td>
-<td><a href="http://1drv.ms/1TsP5Zm" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1TsPf2U" target="_blank" rel="external">GeoJson</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Census Block</td>
-<td><a href="http://1drv.ms/1TsPafL" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1TsP9s6" target="_blank" rel="external">GeoJson</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Place</td>
-<td><a href="http://1drv.ms/1jViGyB" target="_blank" rel="external">Shapefile</a>/<a href="http://1drv.ms/1jViD63" target="_blank" rel="external">GeoJson</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="postgis">postgis</h2><p>Download <a href="http://1drv.ms/1JtYaSe" target="_blank" rel="external">U.S. boundary database</a></p>
-<p>The data links are also at <a href="https://github.com/haoliangyu/us-boundary" target="_blank" rel="external">GitHub</a>.</p>
-<p>Ok, enjoy the data :)</p>
+            <p>After several months’ work at my spare time, I finally publish the first version of my side-project <a href="http://opendatadiscovery.org/" target="_blank" rel="external">OpenDataDiscovery.org</a>. It is a step to answer this very simple question in my mind: <strong>How many open datasets do we have on earth?</strong></p>
+<a id="more"></a>
+<p>I don’t remember exactly when I started thinking about this question. It seems to be natural to ask, but very easy to ignore at the era of open data blooming.</p>
+<p>Just look around. Every people, every government, every institute is talking about open data and releasing their data. EPA, NOAA, NOAA, and many other research institutes provide similar data from different angles about the same aspect of air pollution. Both USGS and USDA publish their soil survey. Numerous federal and local agencies are building their own data portals. Not to mention many research institutes have been doing that for years.</p>
+<p>The rapidly increasing number of data providers and open data creates a view of prosperity, which is going to create another problem: we are walking out of the data desert and now into a data jungle. When the available data is not as much as today, figuring out what and how data are published is not very difficult as there is a small market. However, within a data jungle, it may be easy to understand the status of data opening at the domain you are familiar with, but difficult to look beyond. It is not just because increasing open data brings increasing information, but there are more things happening outside our individual’s knowledge. We tend to be lost in the numerous options of data and miss the whole picture.</p>
+<p>Therefore, when I try to answer my initial question, I know there is a lot data at anywhere but cannot figure out even an estimate.</p>
+<p>The methodology to answer this question is not complex. I just need to collect information from all data portals and create the overview of the world of open data. The difficult part is <code>all data portals</code>. Fortunately, in the open data industry, there are dominant data portal platform providers, who are willing to open the API for data harvesting. These open API allows developers to collect rich information from each individual portal based on their platform, including dataset number, tag, category, publisher etc.</p>
+<p>All I need is a program that could help me automatically collect information from related portals and provide a summary view. So I develop the application <a href="http://opendatadiscovery.org/" target="_blank" rel="external">OpenDataDiscovery.org</a>, which runs the server for data collection and presents the map view of all data portals on earth.</p>
+<p>Today the OpenDataDiscovery.org has been up and running. It is collecting information for more than 100 CKAN instances (<a href="http://ckan.org/instances/" target="_blank" rel="external">see the list</a>) and presents the status for these portals. As it update in a weekly basis, it is able to keep track of the status of worldwide data opening.</p>
+<img src="/2016/10/10/The-Launch-of-OpenDataDiscovery.org/map.png" alt="This is an example image" title="This is an example image">
+<p>Like a puzzle game, it needs us to put every piece into the frame in order to retrieve the overall view. By continuously adding portals into OpenDataDiscovery.org, it will eventually present a full and live picture of the world of open data. Let’s see!</p>
 
             
         </div>
@@ -278,7 +238,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/"  data-tooltip="gtran: a promised, consistent, user-friendly GeoJson conversion package">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -286,7 +246,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/" data-tooltip="Generating masks from Landsat 8 image in ArcMap">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/" data-tooltip="geojson-multiply: a simple package to pack single tyle geojson features">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -301,17 +261,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -359,7 +319,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/"  data-tooltip="gtran: a promised, consistent, user-friendly GeoJson conversion package">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -367,7 +327,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/" data-tooltip="Generating masks from Landsat 8 image in ArcMap">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/" data-tooltip="geojson-multiply: a simple package to pack single tyle geojson features">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -382,17 +342,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -418,17 +378,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -622,9 +582,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://yoursite.com/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/';
+                 this.page.url = 'http://yoursite.com/2016/10/10/The-Launch-of-OpenDataDiscovery.org/';
                  
-                    this.page.identifier = '2015/12/05/Lazy-man-s-package-of-U-S-boundaries/';
+                    this.page.identifier = '2016/10/10/The-Launch-of-OpenDataDiscovery.org/';
                  
              };
             (function() {
