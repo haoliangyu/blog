@@ -11,16 +11,19 @@
     
     
     
-    <meta name="description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
+    <meta name="description" content="UPDATE 27/12/2016: update for TypeScript 2.0
+Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Making Map with Leaflet in TypeScript">
 <meta property="og:url" content="http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
-<meta property="og:updated_time" content="2016-05-08T03:03:19.564Z">
+<meta property="og:description" content="UPDATE 27/12/2016: update for TypeScript 2.0
+Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
+<meta property="og:updated_time" content="2016-12-25T05:22:54.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Making Map with Leaflet in TypeScript">
-<meta name="twitter:description" content="Recently I am working on a web mapping project based on Angular 2 , an increasingly popular succeeding framework of Angular. In this post, I will briefly talk about how to make a map with Leaflet in T">
+<meta name="twitter:description" content="UPDATE 27/12/2016: update for TypeScript 2.0
+Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
     
     
         
@@ -208,18 +211,17 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Recently I am working on a web mapping project based on <a href="https://angular.io/" target="_blank" rel="external">Angular 2</a> , an increasingly popular succeeding framework of <a href="https://angularjs.org/" target="_blank" rel="external">Angular</a>. In this post, I will briefly talk about how to make a map with <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> in TypeScript, whichi is also used in Angular 2.</p>
+            <p><strong>UPDATE 27/12/2016</strong>: update for TypeScript 2.0</p>
+<p>Recently I am working on a web mapping project based on <a href="https://angular.io/" target="_blank" rel="external">Angular 2</a>. There isn’t much data on how to create web map using <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> in TypeScript. So I think it’s good to write a post on it.</p>
 <a id="more"></a>
-<h3 id="Preparation">Preparation</h3><p>I assume you have had some basic understanding on TypeScript. If not, the <a href="https://www.typescriptlang.org/docs/tutorial.html" target="_blank" rel="external">official documentation</a> is an excellent start. (if you are a former .Net developer, you must feel familiar - it’s basically a js-like C#)</p>
-<p>Also, since TypeScript is still a developing language proposed by Microsoft, mainstream browsers don’t provide support to TypeScript directly. To run a web project in TypeScript, you will probably need to compile it into JavaScript. There are several choice of compiler for selection, but that’s out of the scope of this post. If you are also interested in Angular 2, the <a href="another link here">5-minutues Angular 2 tutorial</a> provides a simple but fully functional setup.</p>
-<h3 id="Type_Declaration">Type Declaration</h3><p>The first step of using Leaflet in TypeScript is to add the type declaration file to your project, which describes the class interface of Leaflet.js. This file could be downloaded at the <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/leaflet/leaflet.d.ts" target="_blank" rel="external">DefinitelyTyped repository</a>. Or in a simpler way (if you are <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> lover), install the <a href="http://definitelytyped.org/tsd/" target="_blank" rel="external">tsd</a> tool globally and run the following command in your project folder:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsd init</span><br><span class="line">tsd install leaflet --save</span><br></pre></td></tr></table></figure>
-<p>Then just add the file reference to your script file:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path="path/to/leaflet.d.ts" /&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Mapping">Mapping</h3><p>If you have added a <code>&lt;div&gt;</code> tag (or whatever…) with id <code>map</code>, the way to add a map is just similar to what we do in JavaScript:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> L.Map(<span class="string">'map'</span>, &#123;</span><br><span class="line">  center: <span class="keyword">new</span> L.LatLng(<span class="number">40.731253</span>, -<span class="number">73.996139</span>),</span><br><span class="line">  zoom: <span class="number">12</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>The only difference is that now all Leaflet objects are classes that need to be explicitly newed. We are able to follow exactly the same methodology in JavaScript to manage Leaflet. For example, this shows how to bind an event handler to a L.Marker click event:</p>
+<h3 id="Leaflet,_Typed">Leaflet, Typed</h3><p>TypeScript is definitely typed so you need to provide a type declaration for Leaflet first. The installation of type declaration is much easier at TypeScript 2.0 for its direct support of <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> and you just needs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Type declaration <span class="keyword">for</span> GeoJSON, a dependency</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">npm install @types/geojson</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Type declaration <span class="keyword">for</span> Leaflet</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">npm install @types/leaflet</span><br></pre></td></tr></table></figure>
+<p>It will download the type declaration publish <a href="http://definitelytyped.org/" target="_blank" rel="external">DefinitelyTyped</a> and relate to the installed package. Simple and no more package manager!</p>
+<h3 id="Mapping">Mapping</h3><p>Using Leaflet in TypeScript doesn’t have an essential difference with using it in JavaScript. The only difference is, in the typed environment, many things are declared as class. So you may need to new a class before directly using it:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> L.Map(<span class="string">'map'</span>, &#123;</span><br><span class="line">  center: <span class="keyword">new</span> L.LatLng(<span class="number">40.731253</span>, -<span class="number">73.996139</span>),</span><br><span class="line">  zoom: <span class="number">12</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Also you will need to provide extra type information when using function:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map.on(<span class="string">'click'</span>, (e: LeafletMouseEvent) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> marker = L.marker(e.latlng)</span><br><span class="line">  .bindPopup(<span class="string">'Popup'</span>)</span><br><span class="line">  .addTo(map)</span><br><span class="line">  .openPopup();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>And that’s it. You should have no extra difficult in using Leaflet in TypeScript, if you are familiar with using it in JavaScript and has read the type declaration on what you need.</p>
 <p>Hope you enjoy the journey with TypeScript :)</p>
 
             
