@@ -6,24 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Making Map with Leaflet in TypeScript - HaoliangYu.io</title>
+    <title>Work, Life, 2016 - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta name="description" content="UPDATE 27/12/2016: update for TypeScript 2.0
-Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
+    <meta name="description" content="2016 is a big year for me.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Making Map with Leaflet in TypeScript">
-<meta property="og:url" content="http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/index.html">
+<meta property="og:title" content="Work, Life, 2016">
+<meta property="og:url" content="http://yoursite.com/2016/12/31/Work-Life-2016/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="UPDATE 27/12/2016: update for TypeScript 2.0
-Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
-<meta property="og:updated_time" content="2016-12-25T05:22:54.255Z">
+<meta property="og:description" content="2016 is a big year for me.">
+<meta property="og:image" content="http://yoursite.com/2016/12/31/Work-Life-2016/github-commits.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/31/Work-Life-2016/odd-commits.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/31/Work-Life-2016/trait.jpg">
+<meta property="og:updated_time" content="2016-12-31T21:56:33.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Making Map with Leaflet in TypeScript">
-<meta name="twitter:description" content="UPDATE 27/12/2016: update for TypeScript 2.0
-Recently I am working on a web mapping project based on Angular 2. There isn’t much data on how to create web map using Leaflet in TypeScript. So I think i">
+<meta name="twitter:title" content="Work, Life, 2016">
+<meta name="twitter:description" content="2016 is a big year for me.">
     
     
         
@@ -189,19 +189,19 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Making Map with Leaflet in TypeScript
+            Work, Life, 2016
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-05-06T00:00:00-04:00">
+    <time itemprop="datePublished" datetime="2016-12-31T00:00:00-05:00">
 	
-		    May 06, 2016
+		    Dec 31, 2016
     	
     </time>
     
         <span>分類 </span>
         
-    <a class="category-link" href="/categories/GIS/">GIS</a>
+    <a class="category-link" href="/categories/Life/">Life</a>
 
 
     
@@ -211,37 +211,57 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><strong>UPDATE 27/12/2016</strong>: update for TypeScript 2.0</p>
-<p>Recently I am working on a web mapping project based on <a href="https://angular.io/" target="_blank" rel="external">Angular 2</a>. There isn’t much data on how to create web map using <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> in TypeScript. So I think it’s good to write a post on it.</p>
+            <p>2016 is a big year for me.</p>
 <a id="more"></a>
-<h3 id="Leaflet,_Typed">Leaflet, Typed</h3><p>TypeScript is definitely typed so you need to provide a type declaration for Leaflet first. The installation of type declaration is much easier at TypeScript 2.0 for its direct support of <a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a> and you just needs</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Type declaration <span class="keyword">for</span> GeoJSON, a dependency</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">npm install @types/geojson</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Type declaration <span class="keyword">for</span> Leaflet</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">npm install @types/leaflet</span><br></pre></td></tr></table></figure>
-<p>It will download the type declaration publish <a href="http://definitelytyped.org/" target="_blank" rel="external">DefinitelyTyped</a> and relate to the installed package. Simple and no more package manager!</p>
-<h3 id="Mapping">Mapping</h3><p>Using Leaflet in TypeScript doesn’t have an essential difference with using it in JavaScript. The only difference is, in the typed environment, many things are declared as class. So you may need to new a class before directly using it:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> L.Map(<span class="string">'map'</span>, &#123;</span><br><span class="line">  center: <span class="keyword">new</span> L.LatLng(<span class="number">40.731253</span>, -<span class="number">73.996139</span>),</span><br><span class="line">  zoom: <span class="number">12</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Also you will need to provide extra type information when using function:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map.on(<span class="string">'click'</span>, (e: LeafletMouseEvent) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> marker = L.marker(e.latlng)</span><br><span class="line">  .bindPopup(<span class="string">'Popup'</span>)</span><br><span class="line">  .addTo(map)</span><br><span class="line">  .openPopup();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>And that’s it. You should have no extra difficult in using Leaflet in TypeScript, if you are familiar with using it in JavaScript and has read the type declaration on what you need.</p>
-<p>Hope you enjoy the journey with TypeScript :)</p>
+<p>This is the first year after my graduation. I moved away from the university and settled down at downtown to start my new life. Being a web developer in a small startup is very different from being a student in school. In school there are always paths to follow: the spring and fall curriculum, the study plan of the course, the mentorship of the professor. In a startup, things are less organized and more dynamic. I make my work plan, develop at both ends of our application, help GIS Analysts in the company to automate data pipeline, discuss new features with clients, lead internal code safari, and experiment new technologies for our platform. Every day is a new and challenging day. That’s very exciting.</p>
+<p>Of course challenges mean a lot of work and the trial to keep up with this fast-peace industry means even more. I become a full-time developer. I mean full-time as day and night.</p>
+ <img src="/2016/12/31/Work-Life-2016/github-commits.png" alt="GitHub Commits" title="GitHub Commits">
+<p>My colleague said I was having two jobs: one at the daytime working in the office, and another at the nighttime working at home. That’s true, though the nighttime job is not billable and sometimes more challenging than the daytime one.</p>
+<p>One cruel fact of this industry is that the concepts, trends, and technologies can be changed in just 2 or 3 years. It’s harder when you are not in a CS major (yeah I am the old-class geographer!). At 2016 I took numerous hours to stay with the leading wave of techs:</p>
+<ul>
+<li>Learn how to write in<a href="https://github.com/lukehoban/es6features#readme" target="_blank" rel="external">JavaScript ES6</a></li>
+<li>Learn how to develop application with <a href="https://angular.io/" target="_blank" rel="external">Angular 2</a> and <a href="https://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a></li>
+<li>Play with <a href="http://getbootstrap.com/" target="_blank" rel="external">Bootstrap</a> and <a href="https://material.angularjs.org/latest/" target="_blank" rel="external">Material Design</a></li>
+<li>Understand <a href="https://en.wikipedia.org/wiki/Vector_tiles" target="_blank" rel="external">vector tile</a> and figure out the way to generate it and use it with <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> / <a href="https://github.com/mapbox/mapbox-gl-js" target="_blank" rel="external">Mapbox GL</a></li>
+<li>Get deeper with DevOps tools like <a href="https://www.vagrantup.com/" target="_blank" rel="external">Vagrant</a>, <a href="https://www.docker.com/" target="_blank" rel="external">Docker</a>,and <a href="https://www.nginx.com/" target="_blank" rel="external">NGNIX</a></li>
+<li>Get familar with AWS EC2 and AutoScale service</li>
+</ul>
+<p>I also spent much time on <a href="https://github.com/haoliangyu/basic-data-structure" target="_blank" rel="external">data structures</a> and <a href="https://github.com/haoliangyu" target="_blank" rel="external">algorithms</a> in order to be a qualified software engineer in the future.</p>
+<p>But on the other hand, the software industry is warm as we believe in open source and knowledge sharing. <a href="https://github.com" target="_blank" rel="external">GitHub</a>, <a href="http://stackoverflow.com/" target="_blank" rel="external">StackOverflow</a>, <a href="http://thespatialcommunity.org/" target="_blank" rel="external">The Spatial Community Slack Channel</a>, and many other tech blogs have been my primary learning sources. I am glad that I was introduced into the rapidly developing world of open source GIS. Their generous sharing has been so beneficial to my work and side-projects.</p>
+<p>With the hope of helping the future newbee, I started to publish open source projects with the highest quality I could pursue. This is my nighttime job :-P. So far, I have done</p>
+<ul>
+<li>9 npm modules (<a href="https://www.npmjs.com/~haoliang" target="_blank" rel="external">see here</a>)</li>
+<li>2 Angular 2 mapping project demo with <a href="https://github.com/haoliangyu/angular2-leaflet-starter" target="_blank" rel="external">Leaflet</a> or <a href="https://github.com/haoliangyu/angular2-mapboxgl-starter" target="_blank" rel="external">Mapbox GL</a></li>
+<li>1 fully operating website (<a href="http://opendatadiscovery.org/#map-page" target="_blank" rel="external">OpenDataDiscovery.org</a>)</li>
+<li>29 pull requests to community projects</li>
+</ul>
+<p>I have got the opportunity to learn and test new knowledge that I don’t use in my daytime job. As a benefit, I can move ahead the company and be able to introduce what I learn into the development practice in NBT Solutions.</p>
+<p>Among all of these, I would like to highlight the <a href="https://github.com/haoliangyu/OpenDataDiscovery.org" target="_blank" rel="external">Open Data Discovery</a> project, the monster consuming one third of my spare time!</p>
+<img src="/2016/12/31/Work-Life-2016/odd-commits.png" alt="ODD Commits" title="ODD Commits">
+<p>Like all the others who start their side projects, all I wanted to do initially was simply to make an open data map about <a href="https://www.data.gov/" target="_blank" rel="external">data.gov</a>. But it opened a world much border than I expect to me and there were so many to explore. This website ends up</p>
+<ul>
+<li>supporting 3 major open data portal platforms: <a href="http://ckan.org/" target="_blank" rel="external">CKAN</a>, <a href="http://www.nucivic.com/dkan/" target="_blank" rel="external">DKAN</a>, and <a href="http://socrata.com/" target="_blank" rel="external">Socrata</a></li>
+<li>tracking more than 300 open data portals worldwide</li>
+<li>using two AWS EC2 servers for website hosting and vector tile generation</li>
+<li>storing ~1 million rows of data, which is open to download</li>
+</ul>
+<p>and more is under development. Scaling up a project feels great and the <a href="https://discuss.newbeeokfn.org/t/project-to-monitor-the-status-of-open-data-portals/3927" target="_blank" rel="external">feedback</a> looks great too.</p>
+<p>After doing this amount of work, it make me feels I am no longer a newbee knowing nothing. I am confident to walk out and reach out. In 2016 I attended two conferences, 2016 SIG/GIS Conference and 2016 NYS Geosptial Summit. I co-founded the <a href="http://maptime.io/buffalo/" target="_blank" rel="external">MaptimeBUF</a>, a local meetup for open source GIS, and gave the openning talk <a href="https://github.com/MaptimeBUF/intro-to-osm" target="_blank" rel="external">Introduce to OpenStreetMap</a>. In December, I gave another talk, <a href="https://github.com/haoliangyu/intro-to-leaflet" target="_blank" rel="external">Make an Interactive Map with Leaflet</a>, at the local JavaScript meetup <a href="https://www.meetup.com/Buffalojs/" target="_blank" rel="external">MaptimeBUF</a>.</p>
+<p>I spent my vocation at Washington DC and Ottawa, the two beautiful and historical capitals, and finished my city trip at northeast America. I watched my fist NFL game and the first star war movie. I started skiing as the winter came and got myself on more difficult trails :-)</p>
+<p>Finally I got the working VISA. Good luck 2016.</p>
+<img src="/2016/12/31/Work-Life-2016/trait.jpg" alt="trait" title="trait">
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">標籤</span><br/>
-                
-    <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
-
-            </div>
-        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/"  data-tooltip="geojson-multiply: a simple package to pack single tyle geojson features">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -249,7 +269,7 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/" data-tooltip="gtran: a promised, consistent, user-friendly GeoJson conversion package">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/10/The-Launch-of-OpenDataDiscovery.org/" data-tooltip="The Launch of OpenDataDiscovery.org">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -264,17 +284,17 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -322,7 +342,7 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/"  data-tooltip="geojson-multiply: a simple package to pack single tyle geojson features">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -330,7 +350,7 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/" data-tooltip="gtran: a promised, consistent, user-friendly GeoJson conversion package">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/10/10/The-Launch-of-OpenDataDiscovery.org/" data-tooltip="The Launch of OpenDataDiscovery.org">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -345,17 +365,17 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -381,17 +401,17 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2016/12/31/Work-Life-2016/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -585,9 +605,9 @@ Recently I am working on a web mapping project based on Angular 2. There isn’t
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://yoursite.com/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/';
+                 this.page.url = 'http://yoursite.com/2016/12/31/Work-Life-2016/';
                  
-                    this.page.identifier = '2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/';
+                    this.page.identifier = '2016/12/31/Work-Life-2016/';
                  
              };
             (function() {
