@@ -6,20 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>所有文章 - HaoliangYu.io</title>
+    <title>Using an untyped Leaflet plugin in your TypeScript project - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta name="description">
+    <meta name="description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="HaoliangYu.io">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta property="og:title" content="Using an untyped Leaflet plugin in your TypeScript project">
+<meta property="og:url" content="http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description">
+<meta property="og:description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
+<meta property="og:updated_time" content="2017-01-26T09:01:49.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HaoliangYu.io">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Using an untyped Leaflet plugin in your TypeScript project">
+<meta name="twitter:description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
     
     
         
@@ -53,7 +54,7 @@
 
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">HaoliangYu.io</a>
@@ -71,7 +72,7 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
         
@@ -174,29 +175,24 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/">
-                            Making Map with Leaflet in TypeScript
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-06T12:00:00+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Using an untyped Leaflet plugin in your TypeScript project
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-01-25T13:00:00+08:00">
 	
-		    May 06, 2016
+		    Jan 25, 2017
     	
     </time>
     
@@ -208,221 +204,104 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p><strong>UPDATE 27/12/2016</strong>: update for TypeScript 2.0</p>
-<p>Recently I am working on a web mapping project based on <a href="https://angular.io/">Angular 2</a>. There isn’t much data on how to create web map using <a href="http://leafletjs.com/">Leaflet</a> in TypeScript. So I think it’s good to write a post on it.</p>
-                    
-                        <a href="/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/" class="postShorten-excerpt_link link">
-                            繼續閱讀
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/">
-                            gtran: a promised, consistent, user-friendly GeoJson conversion package
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-02-25T13:00:00+08:00">
-	
-		    Feb 25, 2016
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/Project/">Project</a>
-
-
-    
 </div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> has a prosperous ecosystem with <a href="http://leafletjs.com/plugins.html" target="_blank" rel="external">hundreds of plugins</a>. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping project.</p>
+<a id="more"></a>
+<p>Since TypeScript is definitely typed, a simple workaround is to provide a minimal type declaration file that can expose the plugin functions in the <code>L</code> namespace.</p>
+<p>For example, I would like to display a large GeoJSON file at the browser using the <a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="external">vector tile</a> technique. I can do it in JavaScript with the following code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the GeoJSON somewhere</span></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Slice the GeoJSON into vector tiles on-the-fly with L.vectorGrid.slicer()</span></span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add the tile layer on the map</span></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
+<p>The vector tile plugin <a href="https://github.com/Leaflet/Leaflet.VectorGrid" target="_blank" rel="external">Leaflet.VectorGrid</a> isn’t officially typed and you are not able to directly use this plugin because the compiler doesn’t know its existence. So we just need to declare it with a <code>leaflet.vectorgrid.d.ts</code> file</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in the global namesapce "L"</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> L &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// there is a child namespace "vectorGrid"</span></span><br><span class="line">  <span class="keyword">namespace</span> vectorGrid &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// which has a function call "slicer" that takes data and optional</span></span><br><span class="line">    <span class="comment">// configurations. To make it simple, we don't specify the input</span></span><br><span class="line">    <span class="comment">// and output types.</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">slicer</span>(<span class="params">data: <span class="built_in">any</span>, options?: <span class="built_in">any</span></span>): <span class="title">any</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then we are able to use the function in TypeScript</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path="leaflet.vectorgrid.d.ts"/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet.vectorgrid'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson)</span><br><span class="line"></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
+<p>Here we go!</p>
+<p>If we want to use more, we could continue to populate the type declaration file and maybe contribute it to the community when it becomes more complete.</p>
+<p>For a fully functional exampe, see <a href="https://github.com/haoliangyu/angular2-leaflet-starter" target="_blank" rel="external">angular2-leaflet-starter</a>.</p>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>Do you still feel inconvenient when converting GeoJson to other data formats in Node.js?</p>
-                    
-                        <a href="/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/" class="postShorten-excerpt_link link">
-                            繼續閱讀
-                        </a>
-                        
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/">
-                            Lazy man&#39;s package of nationwide U.S. boundaries
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2015-12-05T13:00:00+08:00">
-	
-		    Dec 05, 2015
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/GIS/">GIS</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">標籤</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
 
             </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>I have been doing GIS work for quite a while and I do hate to download data from multiple sites every time. So I decide to collect those commonly geospatial data and make my own database. Of course, like all open-source people do, I’d love to share my work with you. The first release is the U.S. nationwide U.S. boundary. This dataset include <strong>nation</strong>, <strong>state</strong>, <strong>county</strong>, <strong>place</strong>, <strong>census block</strong>, and <strong>census tract</strong>. The source data come from U.S. Census Bureau and you can find the metadata <a href="https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html">here</a>.</p>
-<p>Multiple formats provided: <strong>shapefile</strong>, <strong>geojson</strong>, and a <strong>postgis</strong> database dump.
-                    
-                        <a href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/" class="postShorten-excerpt_link link">
-                            繼續閱讀
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                            Generating masks from Landsat 8 image in ArcMap
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2015-05-09T09:38:02+08:00">
-	
-		    May 09, 2015
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/GIS/">GIS</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br>
-                    
-                        <a href="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/" class="postShorten-excerpt_link link">
-                            繼續閱讀
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/">
-                            Converting C# Data Value to ArcObject Raster Pixel Value
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2015-03-22T09:30:54+08:00">
-	
-		    Mar 22, 2015
-    	
-    </time>
-    
-        <span>分類 </span>
-        
-    <a class="category-link" href="/categories/GIS/">GIS</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>The length of remote sensing pixel value is constrained by a predefined pixel value type. It is an unchangeable property for each remote sensing image and saving an unsupported value to a image may cause unpredictable errors like application crash or information loss resulted from implicit data type conversion.<br>
-                    
-                        <a href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" class="postShorten-excerpt_link link">
-                            繼續閱讀
-                        </a>
-                        
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        <li class="pagination-prev">
-            
-                <a class="btn btn--default btn--small" href="/ ">
-            
-                <i class="fa fa-angle-left text-base icon-mr"></i>
-                    <span>上一頁</span>
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-twitter"></i>
             </a>
         </li>
         
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
         
-        <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/archives/page/3/">
-                    <span>下一頁</span>
-                <i class="fa fa-angle-right text-base icon-ml"></i>
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
             </a>
         </li>
-        
-        <li class="pagination-number">第 2 頁 共 4 頁</li>
     </ul>
 </div>
 
-</section>
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
 
 
 
@@ -433,6 +312,90 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
             
         </div>
         
@@ -615,6 +578,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script.min.js" type="text/javascript"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/';
+                 
+                    this.page.identifier = '2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'dz316424';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
 

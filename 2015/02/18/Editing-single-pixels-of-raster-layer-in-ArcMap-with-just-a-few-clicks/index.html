@@ -6,23 +6,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Generating masks from Landsat 8 image in ArcMap - HaoliangYu.io</title>
+    <title>Editing single pixels of raster layer in ArcMap with just a few clicks - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta name="description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+    <meta name="description" content="Editing single pixels of a raster layer is a common task in daily GIS and RS practice. For example
+
+Removing misclassified pixels from a land cover classification result
+
+Creating a set of multiple ra">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Generating masks from Landsat 8 image in ArcMap">
-<meta property="og:url" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/index.html">
+<meta property="og:title" content="Editing single pixels of raster layer in ArcMap with just a few clicks">
+<meta property="og:url" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
-<meta property="og:image" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png">
-<meta property="og:image" content="http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png">
-<meta property="og:updated_time" content="2016-02-25T05:55:57.679Z">
+<meta property="og:description" content="Editing single pixels of a raster layer is a common task in daily GIS and RS practice. For example
+
+Removing misclassified pixels from a land cover classification result
+
+Creating a set of multiple ra">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/unzipped_folder.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/install_wizard.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/eidtor_toolbar.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/edit_tool.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/identify_tool.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/gotopixel_tool.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/select_pixels.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/edit_pixels.png">
+<meta property="og:image" content="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/finish_editing.png">
+<meta property="og:updated_time" content="2015-12-06T03:13:21.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Generating masks from Landsat 8 image in ArcMap">
-<meta name="twitter:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+<meta name="twitter:title" content="Editing single pixels of raster layer in ArcMap with just a few clicks">
+<meta name="twitter:description" content="Editing single pixels of a raster layer is a common task in daily GIS and RS practice. For example
+
+Removing misclassified pixels from a land cover classification result
+
+Creating a set of multiple ra">
     
     
         
@@ -188,13 +207,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Generating masks from Landsat 8 image in ArcMap
+            Editing single pixels of raster layer in ArcMap with just a few clicks
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2015-05-08T21:38:02-04:00">
+    <time itemprop="datePublished" datetime="2015-02-18T10:42:56+08:00">
 	
-		    May 08, 2015
+		    Feb 18, 2015
     	
     </time>
     
@@ -210,36 +229,65 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br><a id="more"></a><br>The <strong>ArcMasking</strong> toolbox contains two script tools, one designed for Landsat 8 QA band and one for generic quality assessment bits in other NASA remote sensing products like MODIS.</p>
-<p>This tool can be download at <a href="https://github.com/haoliangyu/arcmasker/releases/tag/ArcMasker_0.1" target="_blank" rel="external">GitHub</a>. After unzipping the package, you could open the ArcMasker.tbx file at the Catalog window in ArcMap and find following tools.</p>
-<h2 id="From_Landsat_8_QA_Band">From Landsat 8 QA Band</h2><hr>
-<img src="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png" alt="This is an example image" title="This is an example image">
-<p>This tool is used to create masks from the Quality Assessment band of Landsat 8 OLI image. It requires several inputs:</p>
+            <p>Editing single pixels of a raster layer is a common task in daily GIS and RS practice. For example</p>
 <ul>
-<li><p><strong>Quality Assessment Band</strong> of Landsat 8 image</p>
+<li><p>Removing misclassified pixels from a land cover classification result</p>
 </li>
-<li><p><strong>Mask type</strong> including cloud, cirrus, water, snow or vegetation</p>
+<li><p>Creating a set of multiple raster layers with minor difference for model simulation</p>
 </li>
-<li><p><strong>Confidence Level</strong> that indicates the likelihood of existing of specific situation. You can also choose to include confidence level above what has been selected.</p>
-</li>
-<li><p><strong>Output Mask</strong> saving path</p>
+<li><p>etc.</p>
 </li>
 </ul>
-<h2 id="From_Quality_Assessment_Bits">From Quality Assessment Bits</h2><hr>
-<img src="/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png" alt="This is an example image" title="This is an example image">
-<p>This tool is used to create masks from other NASA remote sensing products with general quality assessment bit like <a href="https://github.com/haoliangyu/pymasker/wiki/MODIS-use-sample" target="_blank" rel="external">MODIS land products</a>. As each portion of QA bits suggests a certain condition of the image, this toolbox simply examines the value of specific portion of QA bits and generates mask accordingly. Required inputs include:</p>
+<p>In ArcMap we use Raster Calculator and Reclassification tool as many instructions suggest. However, these tools are designed to edit the layer as a whole and they are not flexible enough for minor modification. If ArcMap allows us to edit single features of a vector layer, why we cannot edit single pixels of a raster layer in ArcMap? That is the reason why the project ArcMap Raster Edit Suite (ARES) starts. It aims at providing an ArcMAp Add-In with tools to allows single raster pixels editing, just like what we can do with the vector layer. Flexible, quick and neat!<br><a id="more"></a></p>
+<h2 id="Download_and_Install">Download and Install</h2><hr>
+<p>This project is hosted and published at <a href="https://github.com/haoliangyu/ares" target="_blank" rel="external">GitHub</a>. You can download the installation file at <a href="https://github.com/haoliangyu/ares/releases/download/0.1.3/AREA.0.1.3.zip" target="_blank" rel="external">Here</a></p>
+<p>After the download finishes, you need to choose the installation file that matches the ArcMap on your computer because this Add-In support ArcMap 10.0/10.1/10.2. There are two files in the folder and <strong>ARES.esriAddin</strong> is what you need:</p>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/unzipped_folder.png" alt="This is an example image" title="This is an example image">
+<p>Double click and you could see the installation wizard.</p>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/install_wizard.png" alt="This is an example image" title="This is an example image">
+<p>Just click <strong>Install Add-In</strong> and then you get it.</p>
+<h2 id="Raster_Editor_Toolbar">Raster Editor Toolbar</h2><hr>
+<p>Now you have a new toolbar <strong>Raster Editor</strong> installed in your ArcMap.</p>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/eidtor_toolbar.png" alt="This is an example image" title="This is an example image">
+<p>This toolbar includes following tools:</p>
 <ul>
-<li><p><strong>Quality Assessment Band</strong></p>
+<li><p><img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/edit_tool.png" alt="This is an example image" title="This is an example image">: <strong>Select &amp; Edit</strong>, which is used to select pixels for editing.</p>
 </li>
-<li><p><strong>Bit Position</strong> that indicates where the desired portion of bits starts.</p>
+<li><p><img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/identify_tool.png" alt="This is an example image" title="This is an example image">: <strong>Identify</strong>, which is used to select pixels in order to get their values, row/column indexes and zonal statistics.</p>
 </li>
-<li><p><strong>Bit Length</strong> that indicates the length of bits.</p>
-</li>
-<li><p><strong>Bit Value</strong> that indicates the desired situation.</p>
-</li>
-<li><p><strong>Output Mask</strong> saving path</p>
+<li><p><img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/gotopixel_tool.png" alt="This is an example image" title="This is an example image">: <strong>Go To Pixel</strong>, which is used to locate pixel with given row and column index.</p>
 </li>
 </ul>
+<p>The purpose of this toolbar is to provide tools for precise modification with known row and column index.</p>
+<h2 id="Step_by_Step:_Editing_Raster_Layer">Step by Step: Editing Raster Layer</h2><hr>
+<p>In this section, I am going to show a brief guide on how to edit single pixels of raster layer in ArcMap.</p>
+<ul>
+<li><p>First of all, we have the layer imported in ArcMap.</p>
+</li>
+<li><p>Then start the editing section at the <strong><em>Start Editor</em></strong> menu by clicking <strong><em>Start Editing</em></strong> button. You can only edit one raster layer at one time. If there are more than one raster layers in ArcMap, there will be a prompt-up window to let you choose one.</p>
+</li>
+<li><p>Click the <strong><em>Select &amp; Edit</em></strong> button to activate the tool.</p>
+</li>
+<li><p>Click or drag a region of interest on the layer to selected pixels. All selected pixels will be highlighted on the map with a blue frame. <strong>Noted that selecting too much pixels may lead to crash of ArcMap</strong>.</p>
+</li>
+</ul>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/select_pixels.png" alt="This is an example image" title="This is an example image">
+<ul>
+<li>Edit values of selected pixel at the <strong>Raster Edit</strong> Window. All edits will be highlighted on the map with a yellow symbol.</li>
+</ul>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/edit_pixels.png" alt="This is an example image" title="This is an example image">
+<p>Make sure your input value is compatible with the pixel type of the raster layer. Any pixel left blank will be considered as NoData Pixel.</p>
+<ul>
+<li>Save edits to the raster file using <strong><em>Save Edits</em></strong> button on the <strong><em>Raster Editor</em></strong> menu. If you want to save edits to a new file, click the <strong><em>Save Edits As</em></strong> button. You will see the change of layer right after refreshing the ArcMap.</li>
+</ul>
+<img src="/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/finish_editing.png" alt="This is an example image" title="This is an example image">
+<ul>
+<li>Stop the editing section by clicking <strong><em>Stop Editing</em></strong> button.</li>
+</ul>
+<p>Now you finish the editing section and get the desired result.</p>
+<h2 id="Why_there_is_only_one_toolbar_in_the_suite?">Why there is only one toolbar in the suite?</h2><hr>
+<p>Well, we are working on anther toolbar so that we can make it a real tool suite. Please have a visit on our <a href="https://github.com/haoliangyu/ares" target="_blank" rel="external">project page</a> later.</p>
+<p>If you like this project, give it a star :)</p>
 
             
         </div>
@@ -249,7 +297,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">標籤</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/landsat/">landsat</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/gis/">gis</a>
 
             </div>
         
@@ -258,7 +306,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/"  data-tooltip="Making masks from Quality Control bits of MODIS land products in Python (Update)">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -266,7 +314,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/21/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/" data-tooltip="Comparison of different sampling rules in SVM classification">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -281,17 +329,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -339,7 +387,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/"  data-tooltip="Making masks from Quality Control bits of MODIS land products in Python (Update)">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -347,7 +395,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/21/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/" data-tooltip="Comparison of different sampling rules in SVM classification">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -362,17 +410,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -398,17 +446,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -495,13 +543,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://yoursite.com/2015/01/18/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
+                        <a class="link-unstyled" href="http://yoursite.com/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/">
                             <h3 class="media-heading">Making masks with Landsat 8 Quality Assessment band using Python</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    Jan 18, 2015
+                                    Jan 19, 2015
                                 
                             </span>
                         </span>
@@ -516,13 +564,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://yoursite.com/2015/01/21/Pymasker/">
+                        <a class="link-unstyled" href="http://yoursite.com/2015/01/22/Pymasker/">
                             <h3 class="media-heading">Pymasker</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    Jan 21, 2015
+                                    Jan 22, 2015
                                 
                             </span>
                         </span>
@@ -555,13 +603,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://yoursite.com/2015/02/17/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
+                        <a class="link-unstyled" href="http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/">
                             <h3 class="media-heading">Editing single pixels of raster layer in ArcMap with just a few clicks</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    Feb 17, 2015
+                                    Feb 18, 2015
                                 
                             </span>
                         </span>
@@ -587,7 +635,7 @@
                 data-message-zero="沒有找到文章"
                 data-message-one="找到 1 篇文章"
                 data-message-other="找到 {n} 篇文章">
-                找到 16 篇文章
+                找到 17 篇文章
             </p>
         </div>
     </div>
@@ -602,9 +650,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://yoursite.com/2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/';
+                 this.page.url = 'http://yoursite.com/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/';
                  
-                    this.page.identifier = '2015/05/08/Generating-masks-from-Landsat-8-image-in-ArcMap/';
+                    this.page.identifier = '2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/';
                  
              };
             (function() {
