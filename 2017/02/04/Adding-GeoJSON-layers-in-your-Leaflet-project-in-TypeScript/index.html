@@ -6,21 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Using an untyped Leaflet plugin in your TypeScript project - HaoliangYu.io</title>
+    <title>Adding GeoJSON layers to your Leaflet map in TypeScript - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta name="description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
+    <meta name="description" content="Adding a GeoJSON layer to a Leaflet map in TypeScript has some difference from that in JavaScript.">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Using an untyped Leaflet plugin in your TypeScript project">
-<meta property="og:url" content="http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/index.html">
+<meta property="og:title" content="Adding GeoJSON layers to your Leaflet map in TypeScript">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
-<meta property="og:description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
-<meta property="og:updated_time" content="2017-01-26T09:01:49.550Z">
+<meta property="og:description" content="Adding a GeoJSON layer to a Leaflet map in TypeScript has some difference from that in JavaScript.">
+<meta property="og:updated_time" content="2017-02-03T17:37:43.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Using an untyped Leaflet plugin in your TypeScript project">
-<meta name="twitter:description" content="Leaflet has a prosperous ecosystem with hundreds of plugins. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping proj">
+<meta name="twitter:title" content="Adding GeoJSON layers to your Leaflet map in TypeScript">
+<meta name="twitter:description" content="Adding a GeoJSON layer to a Leaflet map in TypeScript has some difference from that in JavaScript.">
     
     
         
@@ -186,13 +186,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Using an untyped Leaflet plugin in your TypeScript project
+            Adding GeoJSON layers to your Leaflet map in TypeScript
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-01-25T13:00:00+08:00">
+    <time itemprop="datePublished" datetime="2017-02-04T13:53:35+08:00">
 	
-		    Jan 25, 2017
+		    Feb 04, 2017
     	
     </time>
     
@@ -208,18 +208,11 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p><a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> has a prosperous ecosystem with <a href="http://leafletjs.com/plugins.html" target="_blank" rel="external">hundreds of plugins</a>. Most of them are not typed for TypeScript, however, with a minimal setup, you are able to use these plugins in your TypeScript mapping project.</p>
+            <p>Adding a GeoJSON layer to a <a href="http://leafletjs.com/" target="_blank" rel="external">Leaflet</a> map in <a href="http://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a> has some difference from that in JavaScript.</p>
 <a id="more"></a>
-<p>Since TypeScript is definitely typed, a simple workaround is to provide a minimal type declaration file that can expose the plugin functions in the <code>L</code> namespace.</p>
-<p>For example, I would like to display a large GeoJSON file at the browser using the <a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="external">vector tile</a> technique. I can do it in JavaScript with the following code:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the GeoJSON somewhere</span></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Slice the GeoJSON into vector tiles on-the-fly with L.vectorGrid.slicer()</span></span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add the tile layer on the map</span></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
-<p>The vector tile plugin <a href="https://github.com/Leaflet/Leaflet.VectorGrid" target="_blank" rel="external">Leaflet.VectorGrid</a> isn’t officially typed and you are not able to directly use this plugin because the compiler doesn’t know its existence. So we just need to declare it with a <code>leaflet.vectorgrid.d.ts</code> file</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in the global namesapce "L"</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> L &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// there is a child namespace "vectorGrid"</span></span><br><span class="line">  <span class="keyword">namespace</span> vectorGrid &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// which has a function call "slicer" that takes data and optional</span></span><br><span class="line">    <span class="comment">// configurations. To make it simple, we don't specify the input</span></span><br><span class="line">    <span class="comment">// and output types.</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">slicer</span>(<span class="params">data: <span class="built_in">any</span>, options?: <span class="built_in">any</span></span>): <span class="title">any</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Then we are able to use the function in TypeScript</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path="leaflet.vectorgrid.d.ts"/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet.vectorgrid'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson)</span><br><span class="line"></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
-<p>Here we go!</p>
-<p>If we want to use more, we could continue to populate the type declaration file and maybe contribute it to the community when it becomes more complete.</p>
-<p>For a fully functional exampe, see <a href="https://github.com/haoliangyu/angular2-leaflet-starter" target="_blank" rel="external">angular2-leaflet-starter</a>.</p>
+<p> It’s because the GeoJSON is typed in TypeScript and the type declaration of Leaflet adopts it. So whenever you construct the GeoJSON object in TypeScript, it’s important to declare the type of the variable as GeoJSON type:</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// it's necessary to tell variable type</span></span><br><span class="line"><span class="keyword">let</span> featureCollection: GeoJSON.FeatureCollection&lt;<span class="built_in">any</span>&gt; = &#123;</span><br><span class="line">  <span class="keyword">type</span>: <span class="string">'FeatureCollection'</span>,</span><br><span class="line">  features: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">type</span>: <span class="string">'Feature'</span>,</span><br><span class="line">      geometry: &#123;</span><br><span class="line">        <span class="keyword">type</span>: <span class="string">'Point'</span>,</span><br><span class="line">        coordinates: [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">      properties: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// the Leaflet API is the same as the JavaScript one, except for the parameter type requirement</span></span><br><span class="line">L.geoJSON(featureCollection).addTo(<span class="keyword">this</span>.map);</span><br></pre></td></tr></table></figure>
+<p>For more about the specification and example, take a look at the <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/geojson" target="_blank" rel="external">GeoJSON type definition</a>.</p>
 
             
         </div>
@@ -229,7 +222,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">標籤</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/geojson/">geojson</a> <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
 
             </div>
         
@@ -238,7 +231,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"  data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -246,7 +239,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/" data-tooltip="Using an untyped Leaflet plugin in your TypeScript project">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -261,17 +254,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -319,7 +312,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"  data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -327,7 +320,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/" data-tooltip="Using an untyped Leaflet plugin in your TypeScript project">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -342,17 +335,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -378,17 +371,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
@@ -582,9 +575,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/';
+                 this.page.url = 'http://yoursite.com/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/';
                  
-                    this.page.identifier = '2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/';
+                    this.page.identifier = '2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/';
                  
              };
             (function() {
