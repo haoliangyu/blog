@@ -30,7 +30,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -62,7 +62,7 @@
     
         
             <a  class="header-right-picture "
-                href="/#about">
+                href="#about">
         
         
         </a>
@@ -129,7 +129,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/#about"
+                             href="#about"
                             
                         >
                     
@@ -165,7 +165,7 @@
                         <a  class="sidebar-button-link " href="mailto:haoliang.yu@outlook.com" target="_blank">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                        <span class="sidebar-button-desc">Email</span>
+                        <span class="sidebar-button-desc">Mail</span>
                     </a>
             </li>
             
@@ -196,7 +196,7 @@
     	
     </time>
     
-        <span>分類 </span>
+        <span>in </span>
         
     <a class="category-link" href="/categories/GIS/">GIS</a>
 
@@ -212,11 +212,11 @@
 <a id="more"></a>
 <p>Since TypeScript is definitely typed, a simple workaround is to provide a minimal type declaration file that can expose the plugin functions in the <code>L</code> namespace.</p>
 <p>For example, I would like to display a large GeoJSON file at the browser using the <a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="external">vector tile</a> technique. I can do it in JavaScript with the following code:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the GeoJSON somewhere</span></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Slice the GeoJSON into vector tiles on-the-fly with L.vectorGrid.slicer()</span></span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add the tile layer on the map</span></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Get the GeoJSON somewhere</span></div><div class="line"><span class="keyword">let</span> geojson = getGeoJSON();</div><div class="line"></div><div class="line"><span class="comment">// Slice the GeoJSON into vector tiles on-the-fly with L.vectorGrid.slicer()</span></div><div class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson, &#123;&#125;);</div><div class="line"></div><div class="line"><span class="comment">// Add the tile layer on the map</span></div><div class="line">layer.addTo(map);</div></pre></td></tr></table></figure>
 <p>The vector tile plugin <a href="https://github.com/Leaflet/Leaflet.VectorGrid" target="_blank" rel="external">Leaflet.VectorGrid</a> isn’t officially typed and you are not able to directly use this plugin because the compiler doesn’t know its existence. So we just need to declare it with a <code>leaflet.vectorgrid.d.ts</code> file</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in the global namesapce "L"</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> L &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// there is a child namespace "vectorGrid"</span></span><br><span class="line">  <span class="keyword">namespace</span> vectorGrid &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// which has a function call "slicer" that takes data and optional</span></span><br><span class="line">    <span class="comment">// configurations. To make it simple, we don't specify the input</span></span><br><span class="line">    <span class="comment">// and output types.</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">slicer</span>(<span class="params">data: <span class="built_in">any</span>, options?: <span class="built_in">any</span></span>): <span class="title">any</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in the global namesapce "L"</span></div><div class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> L &#123;</div><div class="line"></div><div class="line">  <span class="comment">// there is a child namespace "vectorGrid"</span></div><div class="line">  <span class="keyword">namespace</span> vectorGrid &#123;</div><div class="line"></div><div class="line">    <span class="comment">// which has a function call "slicer" that takes data and optional</span></div><div class="line">    <span class="comment">// configurations. To make it simple, we don't specify the input</span></div><div class="line">    <span class="comment">// and output types.</span></div><div class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">slicer</span>(<span class="params">data: <span class="built_in">any</span>, options?: <span class="built_in">any</span></span>): <span class="title">any</span></span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Then we are able to use the function in TypeScript</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference path="leaflet.vectorgrid.d.ts"/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'leaflet.vectorgrid'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> geojson = getGeoJSON();</span><br><span class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson)</span><br><span class="line"></span><br><span class="line">layer.addTo(map);</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// &lt;reference path="leaflet.vectorgrid.d.ts"/&gt;</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">'leaflet'</span>;</div><div class="line"><span class="keyword">import</span> <span class="string">'leaflet.vectorgrid'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> geojson = getGeoJSON();</div><div class="line"><span class="keyword">let</span> layer = L.vectorGrid.slicer(geojson)</div><div class="line"></div><div class="line">layer.addTo(map);</div></pre></td></tr></table></figure>
 <p>Here we go!</p>
 <p>If we want to use more, we could continue to populate the type declaration file and maybe contribute it to the community when it becomes more complete.</p>
 <p>For a fully functional exampe, see <a href="https://github.com/haoliangyu/angular2-leaflet-starter" target="_blank" rel="external">angular2-leaflet-starter</a>.</p>
@@ -227,7 +227,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">標籤</span><br/>
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/leaflet/">leaflet</a> <a class="tag tag--primary tag--small t-link" href="/tags/typescript/">typescript</a>
 
@@ -241,14 +241,14 @@
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"  data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                 </a>
             </li>
             <li class="post-action">
                 
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -322,14 +322,14 @@
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"  data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                 </a>
             </li>
             <li class="post-action">
                 
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/" data-tooltip="Celebrating the 1,000 data portals at OpenDataDiscovery.org">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -379,17 +379,17 @@
     <ul class="share-options">
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
-                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
-                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/">
-                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
     </ul>
@@ -411,7 +411,7 @@
         
             <h5 id="about-card-bio">
               I am a full-stack javascript developer, geography lover, open source advocate, and skiing player.
-              <!-- <p>author.bio</p>
+              <!-- <p>I am a full-stack javascript developer, geography lover, open source advocate, and skiing player.</p>
  -->
             </h5>
         
@@ -420,7 +420,7 @@
                 <i class="fa fa-briefcase"></i>
                 <br/>
                 Full-Stask GIS Developer
-                <!-- <p>author.job</p>
+                <!-- <p>Full-Stack GIS Developer</p>
  -->
             </div>
          
@@ -450,7 +450,7 @@
             </form>
         </div>
         <div class="modal-body">
-            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="no-result text-color-light text-center">no post found</div>
             <div class="results">
                 
                 <div class="media">
@@ -564,10 +564,10 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium"
-                data-message-zero="沒有找到文章"
-                data-message-one="找到 1 篇文章"
-                data-message-other="找到 {n} 篇文章">
-                找到 18 篇文章
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                19 posts found
             </p>
         </div>
     </div>
@@ -576,7 +576,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<script src="/assets/js/script.min.js"></script>
 <!--SCRIPTS END-->
 
     

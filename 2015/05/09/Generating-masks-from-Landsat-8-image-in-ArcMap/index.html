@@ -23,6 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generating masks from Landsat 8 image in ArcMap">
 <meta name="twitter:description" content="Two months ago I have written a small python package pymasker to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scri">
+<meta name="twitter:image" content="http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png">
     
     
         
@@ -32,7 +33,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -64,7 +65,7 @@
     
         
             <a  class="header-right-picture "
-                href="/#about">
+                href="#about">
         
         
         </a>
@@ -131,7 +132,7 @@
                 <li class="sidebar-button">
                     
                         <a  class="sidebar-button-link "
-                             href="/#about"
+                             href="#about"
                             
                         >
                     
@@ -167,7 +168,7 @@
                         <a  class="sidebar-button-link " href="mailto:haoliang.yu@outlook.com" target="_blank">
                     
                         <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                        <span class="sidebar-button-desc">Email</span>
+                        <span class="sidebar-button-desc">Mail</span>
                     </a>
             </li>
             
@@ -198,7 +199,7 @@
     	
     </time>
     
-        <span>分類 </span>
+        <span>in </span>
         
     <a class="category-link" href="/categories/GIS/">GIS</a>
 
@@ -212,7 +213,7 @@
         <div class="main-content-wrap">
             <p>Two months ago I have written a small python package <a href="https://github.com/haoliangyu/pymasker" target="_blank" rel="external">pymasker</a> to generate mask from the Quality Assessment band of Landsat 8 image and MODIS land products. This package is gaining popularity, But scripting may not be convenient for users who are not familiar with programming, therefore I create a ArcMap python toolbox based on this package for interactive masking.<br><a id="more"></a><br>The <strong>ArcMasking</strong> toolbox contains two script tools, one designed for Landsat 8 QA band and one for generic quality assessment bits in other NASA remote sensing products like MODIS.</p>
 <p>This tool can be download at <a href="https://github.com/haoliangyu/arcmasker/releases/tag/ArcMasker_0.1" target="_blank" rel="external">GitHub</a>. After unzipping the package, you could open the ArcMasker.tbx file at the Catalog window in ArcMap and find following tools.</p>
-<h2 id="From_Landsat_8_QA_Band">From Landsat 8 QA Band</h2><hr>
+<h2 id="From-Landsat-8-QA-Band"><a href="#From-Landsat-8-QA-Band" class="headerlink" title="From Landsat 8 QA Band"></a>From Landsat 8 QA Band</h2><hr>
 <img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Landsat_8.png" alt="This is an example image" title="This is an example image">
 <p>This tool is used to create masks from the Quality Assessment band of Landsat 8 OLI image. It requires several inputs:</p>
 <ul>
@@ -225,7 +226,7 @@
 <li><p><strong>Output Mask</strong> saving path</p>
 </li>
 </ul>
-<h2 id="From_Quality_Assessment_Bits">From Quality Assessment Bits</h2><hr>
+<h2 id="From-Quality-Assessment-Bits"><a href="#From-Quality-Assessment-Bits" class="headerlink" title="From Quality Assessment Bits"></a>From Quality Assessment Bits</h2><hr>
 <img src="/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/Masking_from_Quality_Assessment_Bits.png" alt="This is an example image" title="This is an example image">
 <p>This tool is used to create masks from other NASA remote sensing products with general quality assessment bit like <a href="https://github.com/haoliangyu/pymasker/wiki/MODIS-use-sample" target="_blank" rel="external">MODIS land products</a>. As each portion of QA bits suggests a certain condition of the image, this toolbox simply examines the value of specific portion of QA bits and generates mask accordingly. Required inputs include:</p>
 <ul>
@@ -247,7 +248,7 @@
     <div id="post-footer" class="post-footer main-content-wrap">
         
             <div class="post-footer-tags">
-                <span class="text-color-light text-small">標籤</span><br/>
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
     <a class="tag tag--primary tag--small t-link" href="/tags/arcgis/">arcgis</a> <a class="tag tag--primary tag--small t-link" href="/tags/landsat/">landsat</a> <a class="tag tag--primary tag--small t-link" href="/tags/remote-sensing/">remote sensing</a>
 
@@ -261,14 +262,14 @@
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                 </a>
             </li>
             <li class="post-action">
                 
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -342,14 +343,14 @@
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"  data-tooltip="Lazy man&#39;s package of nationwide U.S. boundaries">
                 
                     <i class="fa fa-angle-left"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
                 </a>
             </li>
             <li class="post-action">
                 
                     <a class="post-action-btn btn btn--default tooltip--top" href="/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/" data-tooltip="Converting C# Data Value to ArcObject Raster Pixel Value">
                 
-                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
@@ -399,17 +400,17 @@
     <ul class="share-options">
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-google-plus"></i><span>分享到 Google+</span>
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/">
-                <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
     </ul>
@@ -431,7 +432,7 @@
         
             <h5 id="about-card-bio">
               I am a full-stack javascript developer, geography lover, open source advocate, and skiing player.
-              <!-- <p>author.bio</p>
+              <!-- <p>I am a full-stack javascript developer, geography lover, open source advocate, and skiing player.</p>
  -->
             </h5>
         
@@ -440,7 +441,7 @@
                 <i class="fa fa-briefcase"></i>
                 <br/>
                 Full-Stask GIS Developer
-                <!-- <p>author.job</p>
+                <!-- <p>Full-Stack GIS Developer</p>
  -->
             </div>
          
@@ -470,7 +471,7 @@
             </form>
         </div>
         <div class="modal-body">
-            <div class="no-result text-color-light text-center">沒有找到文章</div>
+            <div class="no-result text-color-light text-center">no post found</div>
             <div class="results">
                 
                 <div class="media">
@@ -584,10 +585,10 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium"
-                data-message-zero="沒有找到文章"
-                data-message-one="找到 1 篇文章"
-                data-message-other="找到 {n} 篇文章">
-                找到 18 篇文章
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                19 posts found
             </p>
         </div>
     </div>
@@ -596,7 +597,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script.min.js" type="text/javascript"></script>
+<script src="/assets/js/script.min.js"></script>
 <!--SCRIPTS END-->
 
     

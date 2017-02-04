@@ -6,17 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="HaoliangYu.io">
-    <title>Archives: 2014 - HaoliangYu.io</title>
+    <title>Boundary.Now: a simple tool to extract OSM place boundaries - HaoliangYu.io</title>
     <meta name="author" content="Haoliang Yu">
     
     
     
-    <meta property="og:type" content="blog">
-<meta property="og:title" content="HaoliangYu.io">
-<meta property="og:url" content="http://yoursite.com/archives/2014/index.html">
+    <meta name="description" content="Getting a place boundary is sometimes harder than it looks like.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Boundary.Now: a simple tool to extract OSM place boundaries">
+<meta property="og:url" content="http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/index.html">
 <meta property="og:site_name" content="HaoliangYu.io">
+<meta property="og:description" content="Getting a place boundary is sometimes harder than it looks like.">
+<meta property="og:image" content="http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/boundary-now.png">
+<meta property="og:updated_time" content="2017-02-04T10:14:41.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HaoliangYu.io">
+<meta name="twitter:title" content="Boundary.Now: a simple tool to extract OSM place boundaries">
+<meta name="twitter:description" content="Getting a place boundary is sometimes harder than it looks like.">
+<meta name="twitter:image" content="http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/boundary-now.png">
     
     
         
@@ -50,7 +56,7 @@
 
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">HaoliangYu.io</a>
@@ -68,7 +74,7 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
         
@@ -171,29 +177,24 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2014/09/17/ArcMap-Raster-Edit-Suite/">
-                            ArcMap Raster Edit Suite
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2014-09-17T12:00:00+08:00">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Boundary.Now: a simple tool to extract OSM place boundaries
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2017-02-05T06:15:56+08:00">
 	
-		    Sep 17, 2014
+		    Feb 05, 2017
     	
     </time>
     
@@ -205,31 +206,108 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>ArcMap Raster Edit Suite (ARES) is an addin for ArcMap 10.x that enables value editing of single pixels on raster layer. This is an open-source software and the project is hosted at <a href="https://github.com/haoliangyu/ares">GitHub</a> and published at <a href="http://sourceforge.net/projects/arcmaprastereditor/?source=navbar">SourceForge</a> as well.<br>
-                    
-                        <a href="/2014/09/17/ArcMap-Raster-Edit-Suite/" class="postShorten-excerpt_link link">
-                            Continue reading
-                        </a>
-                        
-                    
-                </div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Getting a place boundary is sometimes harder than it looks like.</p>
+<a id="more"></a>
+<p>There are a couple of reasons why it’s hard:</p>
+<ul>
+<li>The boundary data is actually unavailable or not released.</li>
+<li>The boundary data is available, but packaged in a national dataset, like most governmental open data.</li>
+<li>The boundary data is visible, but not downloadable, like the Google map does.</li>
+<li>The boundary data is exportable, but the use is limited, like the Bing map geocoding API does.</li>
+</ul>
+<p>So it’s pretty common for a data analyst to take a lot of effort to find and extract place boundaries. It’s even more painful when we have to download national datasets just for a few cities’ boundary.</p>
+<p>Oh, wait! Isn’t it a free and global geospatial database out there?</p>
+<p>Yeah, <a href="https://www.openstreetmap.org/" target="_blank" rel="external">OpenStreetMap</a> is awesome and the great <a href="http://nominatim.openstreetmap.org/" target="_blank" rel="external">Nominatim</a> service allows us to search through the OSM database with a place name.</p>
+<p>The only problem is the Nominatim interface is not designed for data extraction, even though the API does return place boundary. So I develop <a href="https://haoliangyu.github.io/boundary.now/" target="_blank" rel="external"><strong>Boundary.Now</strong></a>, an interface for Nominatim geocoding API to download place boundary.</p>
+<img src="/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/boundary-now.png" alt="This is an example image" title="This is an example image">
+<p>Like the original interface, it will provide a search box for the desired place name. In the result list, only search results with boundary data are shown and you are able to download the boundary with <strong>GeoJSON</strong> button. The boundary data would be downloaded in GeoJSON, a format widely used by both desktop softwares and web development.</p>
+<p>You can open the tool <a href="https://haoliangyu.github.io/boundary.now/" target="_blank" rel="external"><strong>here</strong></a> and the project is open at <a href="https://github.com/haoliangyu/boundary.now/" target="_blank" rel="external">GitHub</a>.</p>
+
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/gis/">gis</a> <a class="tag tag--primary tag--small t-link" href="/tags/openstreetmap/">openstreetmap</a>
+
+            </div>
         
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/" data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
         
-        <li class="pagination-number">page 1 of 1</li>
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
 
 
 
@@ -240,6 +318,90 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/" data-tooltip="Adding GeoJSON layers to your Leaflet map in TypeScript">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
             
         </div>
         
@@ -422,6 +584,25 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://yoursite.com/2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/';
+                 
+                    this.page.identifier = '2017/02/05/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'dz316424';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
 
