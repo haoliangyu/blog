@@ -18,10 +18,12 @@ search:
 
 # friends link
 links:
-  - name: EsriDC
-    url: http://dc.esri.com/
+  - name: GitHub
+    url: https://github.com/haoliangyu
   - name: LinkedIn
     url: https://www.linkedin.com/in/haoliangyu/
+  - name: EsriDC
+    url: http://dc.esri.com/
 
 # navigation menu
 menu:
