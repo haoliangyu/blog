@@ -12,7 +12,7 @@
     "clean": "hexo clean"
   },
   "dependencies": {
-    "hexo": "^3.2.0",
+    "hexo": "^3.6.0",
     "hexo-all-minifier": "^0.5.2",
     "hexo-autoprefixer": "^1.0.0",
     "hexo-generator-archive": "^0.1.4",
@@ -27,5 +27,6 @@
     "hexo-renderer-marked": "^0.3.0",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0"
-  }
+  },
+  "devDependencies": {}
 }
