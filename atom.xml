@@ -3,11 +3,11 @@
   <title>Distributed Knowledge</title>
   
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://haoliangyu.github.io/"/>
+  <link href="http://haoliangyu.github.io/blog/"/>
   <updated>2018-03-03T20:45:36.122Z</updated>
-  <id>http://haoliangyu.github.io/</id>
+  <id>http://haoliangyu.github.io/blog/</id>
   
   <author>
     <name>Haoliang Yu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Using RxJS with PostgreSQL</title>
-    <link href="http://haoliangyu.github.io/2017/04/13/Using-RxJS-with-PostgreSQL/"/>
-    <id>http://haoliangyu.github.io/2017/04/13/Using-RxJS-with-PostgreSQL/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/04/13/Using-RxJS-with-PostgreSQL/"/>
+    <id>http://haoliangyu.github.io/blog/2017/04/13/Using-RxJS-with-PostgreSQL/</id>
     <published>2017-04-13T18:47:46.000Z</published>
     <updated>2018-03-03T20:45:36.122Z</updated>
     
@@ -36,8 +36,8 @@
   
   <entry>
     <title>The unofficial documentation for ArcGIS Open Data APIs</title>
-    <link href="http://haoliangyu.github.io/2017/02/11/The-unofficial-documentation-for-ArcGIS-Open-Data-dataset-search-API/"/>
-    <id>http://haoliangyu.github.io/2017/02/11/The-unofficial-documentation-for-ArcGIS-Open-Data-dataset-search-API/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/02/11/The-unofficial-documentation-for-ArcGIS-Open-Data-dataset-search-API/"/>
+    <id>http://haoliangyu.github.io/blog/2017/02/11/The-unofficial-documentation-for-ArcGIS-Open-Data-dataset-search-API/</id>
     <published>2017-02-11T16:48:55.000Z</published>
     <updated>2018-03-03T20:45:36.122Z</updated>
     
@@ -49,19 +49,19 @@
     
     </summary>
     
-      <category term="Open Data" scheme="http://haoliangyu.github.io/categories/Open-Data/"/>
+      <category term="Open Data" scheme="http://haoliangyu.github.io/blog/categories/Open-Data/"/>
     
     
-      <category term="arcgis" scheme="http://haoliangyu.github.io/tags/arcgis/"/>
+      <category term="arcgis" scheme="http://haoliangyu.github.io/blog/tags/arcgis/"/>
     
-      <category term="open data" scheme="http://haoliangyu.github.io/tags/open-data/"/>
+      <category term="open data" scheme="http://haoliangyu.github.io/blog/tags/open-data/"/>
     
   </entry>
   
   <entry>
     <title>Boundary.Now: a simple tool to extract OSM place boundaries</title>
-    <link href="http://haoliangyu.github.io/2017/02/04/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/"/>
-    <id>http://haoliangyu.github.io/2017/02/04/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/02/04/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/"/>
+    <id>http://haoliangyu.github.io/blog/2017/02/04/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/</id>
     <published>2017-02-04T22:15:56.000Z</published>
     <updated>2017-02-26T05:00:00.000Z</updated>
     
@@ -73,19 +73,19 @@
     
     </summary>
     
-      <category term="Project" scheme="http://haoliangyu.github.io/categories/Project/"/>
+      <category term="Project" scheme="http://haoliangyu.github.io/blog/categories/Project/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="openstreetmap" scheme="http://haoliangyu.github.io/tags/openstreetmap/"/>
+      <category term="openstreetmap" scheme="http://haoliangyu.github.io/blog/tags/openstreetmap/"/>
     
   </entry>
   
   <entry>
     <title>Adding GeoJSON layers to your Leaflet map in TypeScript</title>
-    <link href="http://haoliangyu.github.io/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"/>
-    <id>http://haoliangyu.github.io/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/"/>
+    <id>http://haoliangyu.github.io/blog/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/</id>
     <published>2017-02-04T05:53:35.000Z</published>
     <updated>2018-03-03T20:45:36.102Z</updated>
     
@@ -97,21 +97,21 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="geojson" scheme="http://haoliangyu.github.io/tags/geojson/"/>
+      <category term="geojson" scheme="http://haoliangyu.github.io/blog/tags/geojson/"/>
     
-      <category term="leaflet" scheme="http://haoliangyu.github.io/tags/leaflet/"/>
+      <category term="leaflet" scheme="http://haoliangyu.github.io/blog/tags/leaflet/"/>
     
-      <category term="typescript" scheme="http://haoliangyu.github.io/tags/typescript/"/>
+      <category term="typescript" scheme="http://haoliangyu.github.io/blog/tags/typescript/"/>
     
   </entry>
   
   <entry>
     <title>Using an untyped Leaflet plugin in your TypeScript project</title>
-    <link href="http://haoliangyu.github.io/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/"/>
-    <id>http://haoliangyu.github.io/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/"/>
+    <id>http://haoliangyu.github.io/blog/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/</id>
     <published>2017-01-25T05:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.122Z</updated>
     
@@ -123,19 +123,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="leaflet" scheme="http://haoliangyu.github.io/tags/leaflet/"/>
+      <category term="leaflet" scheme="http://haoliangyu.github.io/blog/tags/leaflet/"/>
     
-      <category term="typescript" scheme="http://haoliangyu.github.io/tags/typescript/"/>
+      <category term="typescript" scheme="http://haoliangyu.github.io/blog/tags/typescript/"/>
     
   </entry>
   
   <entry>
     <title>Celebrating the 1,000 data portals at OpenDataDiscovery.org</title>
-    <link href="http://haoliangyu.github.io/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/"/>
-    <id>http://haoliangyu.github.io/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/</id>
+    <link href="http://haoliangyu.github.io/blog/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/"/>
+    <id>http://haoliangyu.github.io/blog/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/</id>
     <published>2017-01-16T05:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.110Z</updated>
     
@@ -147,21 +147,21 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="OpenDataDiscovery.org" scheme="http://haoliangyu.github.io/tags/OpenDataDiscovery-org/"/>
+      <category term="OpenDataDiscovery.org" scheme="http://haoliangyu.github.io/blog/tags/OpenDataDiscovery-org/"/>
     
-      <category term="open data" scheme="http://haoliangyu.github.io/tags/open-data/"/>
+      <category term="open data" scheme="http://haoliangyu.github.io/blog/tags/open-data/"/>
     
   </entry>
   
   <entry>
     <title>Work, Life, 2016</title>
-    <link href="http://haoliangyu.github.io/2016/12/31/Work-Life-2016/"/>
-    <id>http://haoliangyu.github.io/2016/12/31/Work-Life-2016/</id>
+    <link href="http://haoliangyu.github.io/blog/2016/12/31/Work-Life-2016/"/>
+    <id>http://haoliangyu.github.io/blog/2016/12/31/Work-Life-2016/</id>
     <published>2016-12-31T05:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.122Z</updated>
     
@@ -173,15 +173,15 @@
     
     </summary>
     
-      <category term="Life" scheme="http://haoliangyu.github.io/categories/Life/"/>
+      <category term="Life" scheme="http://haoliangyu.github.io/blog/categories/Life/"/>
     
     
   </entry>
   
   <entry>
     <title>The Launch of OpenDataDiscovery.org</title>
-    <link href="http://haoliangyu.github.io/2016/10/10/The-Launch-of-OpenDataDiscovery.org/"/>
-    <id>http://haoliangyu.github.io/2016/10/10/The-Launch-of-OpenDataDiscovery.org/</id>
+    <link href="http://haoliangyu.github.io/blog/2016/10/10/The-Launch-of-OpenDataDiscovery.org/"/>
+    <id>http://haoliangyu.github.io/blog/2016/10/10/The-Launch-of-OpenDataDiscovery.org/</id>
     <published>2016-10-10T04:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -193,21 +193,21 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="OpenDataDiscovery.org" scheme="http://haoliangyu.github.io/tags/OpenDataDiscovery-org/"/>
+      <category term="OpenDataDiscovery.org" scheme="http://haoliangyu.github.io/blog/tags/OpenDataDiscovery-org/"/>
     
-      <category term="open data" scheme="http://haoliangyu.github.io/tags/open-data/"/>
+      <category term="open data" scheme="http://haoliangyu.github.io/blog/tags/open-data/"/>
     
   </entry>
   
   <entry>
     <title>geojson-multiply: a simple package to pack single tyle geojson features</title>
-    <link href="http://haoliangyu.github.io/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/"/>
-    <id>http://haoliangyu.github.io/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/</id>
+    <link href="http://haoliangyu.github.io/blog/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/"/>
+    <id>http://haoliangyu.github.io/blog/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/</id>
     <published>2016-05-07T04:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.138Z</updated>
     
@@ -219,19 +219,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="geojson" scheme="http://haoliangyu.github.io/tags/geojson/"/>
+      <category term="geojson" scheme="http://haoliangyu.github.io/blog/tags/geojson/"/>
     
-      <category term="javascript" scheme="http://haoliangyu.github.io/tags/javascript/"/>
+      <category term="javascript" scheme="http://haoliangyu.github.io/blog/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>Making Map with Leaflet in TypeScript</title>
-    <link href="http://haoliangyu.github.io/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/"/>
-    <id>http://haoliangyu.github.io/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/</id>
+    <link href="http://haoliangyu.github.io/blog/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/"/>
+    <id>http://haoliangyu.github.io/blog/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/</id>
     <published>2016-05-06T04:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -243,19 +243,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="leaflet" scheme="http://haoliangyu.github.io/tags/leaflet/"/>
+      <category term="leaflet" scheme="http://haoliangyu.github.io/blog/tags/leaflet/"/>
     
-      <category term="typescript" scheme="http://haoliangyu.github.io/tags/typescript/"/>
+      <category term="typescript" scheme="http://haoliangyu.github.io/blog/tags/typescript/"/>
     
   </entry>
   
   <entry>
     <title>gtran: a promised, consistent, user-friendly GeoJson conversion package</title>
-    <link href="http://haoliangyu.github.io/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/"/>
-    <id>http://haoliangyu.github.io/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/</id>
+    <link href="http://haoliangyu.github.io/blog/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/"/>
+    <id>http://haoliangyu.github.io/blog/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/</id>
     <published>2016-02-25T05:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.138Z</updated>
     
@@ -267,21 +267,21 @@
     
     </summary>
     
-      <category term="Project" scheme="http://haoliangyu.github.io/categories/Project/"/>
+      <category term="Project" scheme="http://haoliangyu.github.io/blog/categories/Project/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="project" scheme="http://haoliangyu.github.io/tags/project/"/>
+      <category term="project" scheme="http://haoliangyu.github.io/blog/tags/project/"/>
     
-      <category term="javascript" scheme="http://haoliangyu.github.io/tags/javascript/"/>
+      <category term="javascript" scheme="http://haoliangyu.github.io/blog/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>Lazy man&#39;s package of nationwide U.S. boundaries</title>
-    <link href="http://haoliangyu.github.io/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"/>
-    <id>http://haoliangyu.github.io/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/"/>
+    <id>http://haoliangyu.github.io/blog/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/</id>
     <published>2015-12-05T05:00:00.000Z</published>
     <updated>2016-01-24T05:00:00.000Z</updated>
     
@@ -293,19 +293,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="open data" scheme="http://haoliangyu.github.io/tags/open-data/"/>
+      <category term="open data" scheme="http://haoliangyu.github.io/blog/tags/open-data/"/>
     
   </entry>
   
   <entry>
     <title>Generating masks from Landsat 8 image in ArcMap</title>
-    <link href="http://haoliangyu.github.io/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/"/>
-    <id>http://haoliangyu.github.io/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/"/>
+    <id>http://haoliangyu.github.io/blog/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/</id>
     <published>2015-05-09T01:38:02.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -317,21 +317,21 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="arcgis" scheme="http://haoliangyu.github.io/tags/arcgis/"/>
+      <category term="arcgis" scheme="http://haoliangyu.github.io/blog/tags/arcgis/"/>
     
-      <category term="remote sensing" scheme="http://haoliangyu.github.io/tags/remote-sensing/"/>
+      <category term="remote sensing" scheme="http://haoliangyu.github.io/blog/tags/remote-sensing/"/>
     
-      <category term="landsat" scheme="http://haoliangyu.github.io/tags/landsat/"/>
+      <category term="landsat" scheme="http://haoliangyu.github.io/blog/tags/landsat/"/>
     
   </entry>
   
   <entry>
     <title>Converting C# Data Value to ArcObject Raster Pixel Value</title>
-    <link href="http://haoliangyu.github.io/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/"/>
-    <id>http://haoliangyu.github.io/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/"/>
+    <id>http://haoliangyu.github.io/blog/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/</id>
     <published>2015-03-22T01:30:54.000Z</published>
     <updated>2018-03-03T20:45:36.114Z</updated>
     
@@ -343,19 +343,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="arcobject" scheme="http://haoliangyu.github.io/tags/arcobject/"/>
+      <category term="arcobject" scheme="http://haoliangyu.github.io/blog/tags/arcobject/"/>
     
-      <category term="C#" scheme="http://haoliangyu.github.io/tags/C/"/>
+      <category term="C#" scheme="http://haoliangyu.github.io/blog/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>Yet another way to edit your raster layer in ArcMap - Paint on it!</title>
-    <link href="http://haoliangyu.github.io/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"/>
-    <id>http://haoliangyu.github.io/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/"/>
+    <id>http://haoliangyu.github.io/blog/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/</id>
     <published>2015-03-12T01:44:53.000Z</published>
     <updated>2018-03-03T20:45:36.134Z</updated>
     
@@ -367,19 +367,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="arcgis" scheme="http://haoliangyu.github.io/tags/arcgis/"/>
+      <category term="arcgis" scheme="http://haoliangyu.github.io/blog/tags/arcgis/"/>
     
   </entry>
   
   <entry>
     <title>Making masks from Quality Control bits of MODIS land products in Python (Update)</title>
-    <link href="http://haoliangyu.github.io/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/"/>
-    <id>http://haoliangyu.github.io/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/"/>
+    <id>http://haoliangyu.github.io/blog/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/</id>
     <published>2015-02-20T02:23:29.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -391,21 +391,21 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="remote sensing" scheme="http://haoliangyu.github.io/tags/remote-sensing/"/>
+      <category term="remote sensing" scheme="http://haoliangyu.github.io/blog/tags/remote-sensing/"/>
     
-      <category term="modis" scheme="http://haoliangyu.github.io/tags/modis/"/>
+      <category term="modis" scheme="http://haoliangyu.github.io/blog/tags/modis/"/>
     
-      <category term="python" scheme="http://haoliangyu.github.io/tags/python/"/>
+      <category term="python" scheme="http://haoliangyu.github.io/blog/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Editing single pixels of raster layer in ArcMap with just a few clicks</title>
-    <link href="http://haoliangyu.github.io/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/"/>
-    <id>http://haoliangyu.github.io/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/"/>
+    <id>http://haoliangyu.github.io/blog/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/</id>
     <published>2015-02-18T02:42:56.000Z</published>
     <updated>2018-03-03T20:45:36.114Z</updated>
     
@@ -417,19 +417,19 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="arcgis" scheme="http://haoliangyu.github.io/tags/arcgis/"/>
+      <category term="arcgis" scheme="http://haoliangyu.github.io/blog/tags/arcgis/"/>
     
   </entry>
   
   <entry>
     <title>Comparison of different sampling rules in SVM classification</title>
-    <link href="http://haoliangyu.github.io/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/"/>
-    <id>http://haoliangyu.github.io/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/"/>
+    <id>http://haoliangyu.github.io/blog/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/</id>
     <published>2015-01-26T05:00:00.000Z</published>
     <updated>2018-03-03T20:45:36.114Z</updated>
     
@@ -441,17 +441,17 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="remote sensing" scheme="http://haoliangyu.github.io/tags/remote-sensing/"/>
+      <category term="remote sensing" scheme="http://haoliangyu.github.io/blog/tags/remote-sensing/"/>
     
   </entry>
   
   <entry>
     <title>Pymasker</title>
-    <link href="http://haoliangyu.github.io/2015/01/22/Pymasker/"/>
-    <id>http://haoliangyu.github.io/2015/01/22/Pymasker/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/01/22/Pymasker/"/>
+    <id>http://haoliangyu.github.io/blog/2015/01/22/Pymasker/</id>
     <published>2015-01-22T03:03:02.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -463,21 +463,21 @@
     
     </summary>
     
-      <category term="Project" scheme="http://haoliangyu.github.io/categories/Project/"/>
+      <category term="Project" scheme="http://haoliangyu.github.io/blog/categories/Project/"/>
     
     
-      <category term="gis" scheme="http://haoliangyu.github.io/tags/gis/"/>
+      <category term="gis" scheme="http://haoliangyu.github.io/blog/tags/gis/"/>
     
-      <category term="project" scheme="http://haoliangyu.github.io/tags/project/"/>
+      <category term="project" scheme="http://haoliangyu.github.io/blog/tags/project/"/>
     
-      <category term="python" scheme="http://haoliangyu.github.io/tags/python/"/>
+      <category term="python" scheme="http://haoliangyu.github.io/blog/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Making masks with Landsat 8 Quality Assessment band using Python</title>
-    <link href="http://haoliangyu.github.io/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/"/>
-    <id>http://haoliangyu.github.io/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/</id>
+    <link href="http://haoliangyu.github.io/blog/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/"/>
+    <id>http://haoliangyu.github.io/blog/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/</id>
     <published>2015-01-19T02:13:06.000Z</published>
     <updated>2018-03-03T20:45:36.118Z</updated>
     
@@ -489,14 +489,14 @@
     
     </summary>
     
-      <category term="GIS" scheme="http://haoliangyu.github.io/categories/GIS/"/>
+      <category term="GIS" scheme="http://haoliangyu.github.io/blog/categories/GIS/"/>
     
     
-      <category term="remote sensing" scheme="http://haoliangyu.github.io/tags/remote-sensing/"/>
+      <category term="remote sensing" scheme="http://haoliangyu.github.io/blog/tags/remote-sensing/"/>
     
-      <category term="landsat" scheme="http://haoliangyu.github.io/tags/landsat/"/>
+      <category term="landsat" scheme="http://haoliangyu.github.io/blog/tags/landsat/"/>
     
-      <category term="python" scheme="http://haoliangyu.github.io/tags/python/"/>
+      <category term="python" scheme="http://haoliangyu.github.io/blog/tags/python/"/>
     
   </entry>
   
