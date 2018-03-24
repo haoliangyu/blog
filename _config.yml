@@ -81,6 +81,8 @@ all_minifier: true
 deploy:
   type:
 
+disqus_shortname: dz316424
+
 githubEmojis:
   enable: true
   className: github-emoji
