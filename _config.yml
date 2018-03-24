@@ -80,3 +80,15 @@ all_minifier: true
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+disqus_shortname: dz316424
+
+githubEmojis:
+  enable: true
+  className: github-emoji
+  unicode: false
+  styles:
+    display: inline
+    vertical-align: middle
+    margin: '0 3px'
+  localEmojis:
