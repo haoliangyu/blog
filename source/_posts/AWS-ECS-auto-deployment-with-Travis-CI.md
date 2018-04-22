@@ -1,6 +1,7 @@
 ---
 title: AWS ECS continuous deployment with Travis CI
 date: 2018-03-19
+updated: 2018-04-22
 categories:
 - AWS
 tags:
@@ -9,7 +10,7 @@ tags:
 - deloyment
 ---
 
-In this article I am going to talk about how to build a continuous deployment pipeline for an [AWS ECS](https://aws.amazon.com/ecs/) application using [Travis CI](https://travis-ci.org).
+This article discusses how to build a continuous deployment pipeline for an [AWS ECS](https://aws.amazon.com/ecs/) application using [Travis CI](https://travis-ci.org).
 
 <!-- more -->
 
@@ -70,8 +71,13 @@ curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-de
   sudo tee -a /usr/bin/ecs-deploy
 sudo chmod +x /usr/bin/ecs-deploy
 
-# build the docker image and push to an image repository
+# login AWS ECR
 eval $(aws ecr get-login --region us-east-1)
+
+# or login DockerHub
+# docker login --username $DOCKER_HUB_USER --password $DOCKER_HUB_PSW
+
+# build the docker image and push to an image repository
 docker build -t haoliangyu/ecs-auto-deploy .
 docker tag haoliangyu/ecs-auto-deploy:latest $IMAGE_REPO_URL:latest
 docker push $IMAGE_REPO_URL:latest
@@ -82,7 +88,7 @@ ecs-deploy -c $CLUSTER_NAME -n $SERVICE_NAME -i $IMAGE_REPO_URL:latest
 
 All `$VARIABLE_NAME` in the deployment script refer to an environment variable. Except `PATH` and `HOME`, which are provided by the operation system, you should provide the rest of them:
 
-  * `IMAGE_REPO_URL` is the url of a docker image repository. It could be [DockerHub](https://hub.docker.com/), [AWS ECR](https://aws.amazon.com/ecr), or any other. In the example code, it works with AWS ECR.
+  * `IMAGE_REPO_URL` is the url of a docker image repository. It could be [DockerHub](https://hub.docker.com/) repository name or [AWS ECR](https://aws.amazon.com/ecr) repository url, or any other.
   * `CLUSTER_NAME` is the name of the running ECS cluster.
   * `SERVICE_NAME` is the name of the running ECS service.
 
