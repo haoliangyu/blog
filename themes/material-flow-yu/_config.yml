@@ -50,4 +50,4 @@ social:
 - slug: github
   url: https://github.com/haoliangyu
 - slug: rss
-  url: /atom.xml
+  url: /blog/atom.xml
