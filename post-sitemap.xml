@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2019/05/13/Tips-on-developing-cross-platform-Node-js-application/</loc>
+        <lastmod>2019-05-31T19:40:09.072Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2016/05/07/geojson-multiply-a-simple-library-to-pack-single-type-geojson-features/</loc>
+        <lastmod>2019-05-13T23:55:30.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2016/02/25/gtran-a-promised-consistent-user-friendly-GeoJson-conversion-package/</loc>
+        <lastmod>2019-05-13T23:55:30.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/03/12/Yet-another-way-to-edit-your-raster-layer-in-ArcMap-Paint-on-it/</loc>
+        <lastmod>2019-05-13T23:55:30.627Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2017/02/11/The-unofficial-documentation-for-ArcGIS-Open-Data-dataset-search-API/</loc>
+        <lastmod>2019-05-13T23:55:30.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2017/01/25/Using-an-untyped-Leaflet-plugin-in-your-TypeSccript-project/</loc>
+        <lastmod>2019-05-13T23:55:30.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2016/12/31/Work-Life-2016/</loc>
+        <lastmod>2019-05-13T23:55:30.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/02/20/Making-masks-from-Quality-Control-bits-of-MODIS-land-products-in-Python-Update/</loc>
+        <lastmod>2019-05-13T23:55:30.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/01/19/Making-masks-with-Landsat-8-Quality-Assessment-band-using-Python/</loc>
+        <lastmod>2019-05-13T23:55:30.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/01/22/Pymasker/</loc>
+        <lastmod>2019-05-13T23:55:30.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2016/10/10/The-Launch-of-OpenDataDiscovery.org/</loc>
+        <lastmod>2019-05-13T23:55:30.615Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/03/22/Converting-C-Data-Value-to-ArcObject-Raster-Pixel-Value/</loc>
+        <lastmod>2019-05-13T23:55:30.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/02/18/Editing-single-pixels-of-raster-layer-in-ArcMap-with-just-a-few-clicks/</loc>
+        <lastmod>2019-05-13T23:55:30.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/05/09/Generating-masks-from-Landsat-8-image-in-ArcMap/</loc>
+        <lastmod>2019-05-13T23:55:30.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2016/05/06/Making-A-Map-with-Leaflet-in-TypeScript/</loc>
+        <lastmod>2019-05-13T23:55:30.611Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2017/01/16/Celebrating-the-1-000-data-portals-at-OpenDataDiscovery-org/</loc>
+        <lastmod>2019-05-13T23:55:30.607Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/01/26/Comparison-of-different-sampling-rules-in-SVM-classification/</loc>
+        <lastmod>2019-05-13T23:55:30.607Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2017/02/04/Adding-GeoJSON-layers-in-your-Leaflet-project-in-TypeScript/</loc>
+        <lastmod>2019-05-13T23:55:30.599Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2018/03/19/AWS-ECS-auto-deployment-with-Travis-CI/</loc>
+        <lastmod>2018-04-22T04:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2017/02/04/Boundary-Now-a-simple-tool-to-extract-OSM-place-boundaries/</loc>
+        <lastmod>2017-02-26T05:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2015/12/05/Lazy-man-s-package-of-U-S-boundaries/</loc>
+        <lastmod>2016-01-24T05:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/2014/09/17/ArcMap-Raster-Edit-Suite/</loc>
+        <lastmod>2015-12-05T05:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
