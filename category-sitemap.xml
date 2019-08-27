@@ -8,43 +8,43 @@
     </url>
 
     <url>
-        <loc>http://haoliangyu.github.io/blog/categories/Programming/</loc>
-        <lastmod>2019-05-31T19:39:34.288Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://haoliangyu.github.io/blog/categories/Project/</loc>
-        <lastmod>2019-05-13T23:55:30.631Z</lastmod>
+        <lastmod>2019-08-27T16:55:59.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://haoliangyu.github.io/blog/categories/GIS/</loc>
-        <lastmod>2019-05-13T23:55:30.631Z</lastmod>
+        <lastmod>2019-08-27T16:55:59.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://haoliangyu.github.io/blog/categories/Life/</loc>
-        <lastmod>2019-05-13T23:55:30.619Z</lastmod>
+        <lastmod>2019-08-27T16:55:59.512Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://haoliangyu.github.io/blog/categories/Programming/</loc>
+        <lastmod>2019-08-27T16:55:59.508Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://haoliangyu.github.io/blog/categories/Open-Data/</loc>
-        <lastmod>2019-05-13T23:55:30.619Z</lastmod>
+        <lastmod>2019-08-27T16:55:59.508Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://haoliangyu.github.io/blog/categories/AWS/</loc>
-        <lastmod>2018-04-22T04:00:00.000Z</lastmod>
+        <lastmod>2018-04-22T00:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
