@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "scripts": {
     "build": "hexo generate",
-    "start": "hexo server --port 3833 -w",
+    "start": "hexo server --port 3000 -w",
     "new": "hexo new",
     "clean": "hexo clean"
   },
